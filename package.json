@@ -5,6 +5,9 @@
   "homepage": "./",
   "private": true,
   "dependencies": {
+    "@radix-ui/react-checkbox": "^1.0.0",
+    "@radix-ui/react-slot": "^1.0.0",
+    "clsx": "^1.1.0",
     "@electron/remote": "^2.0.8",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -16,6 +19,7 @@
     "concurrently": "^7.4.0",
     "cross-env": "^7.0.3",
     "electron": "^21.2.0",
+    "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2",
