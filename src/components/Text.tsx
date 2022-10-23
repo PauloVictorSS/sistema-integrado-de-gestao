@@ -10,7 +10,7 @@ export function Text({ size = 'xs', children, className }: TextProps) {
 
   return (
     <p 
-      className={'text-gray-100 font-sans text-' + size + " " + className}
+      className={className + ' text-gray-100 font-sans text-' + size}
     >
       {children}
     </p>
