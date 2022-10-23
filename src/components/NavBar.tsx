@@ -1,6 +1,7 @@
 import { Slot } from "@radix-ui/react-slot"
-import { List, House, PuzzlePiece, Gear, FolderUser, ChartLineUp, CurrencyCircleDollar, UserGear, SignOut } from "phosphor-react"
+import { House, PuzzlePiece, Gear, FolderUser, ChartLineUp, CurrencyCircleDollar, UserGear, SignOut } from "phosphor-react"
 import { ReactNode, useState } from "react"
+import {Text} from "./Text"
 
 interface NavBarItemProps{
   name: string
@@ -12,11 +13,11 @@ interface NavBarItemProps{
 function NavBarItem({name, link, icon, active}: NavBarItemProps) {
   return (
     <a href={link}>
-      <div className={"flex gap-4 items-center justify-start py-2 hover:bg-gray-700 " + (active ? "bg-gray-700" : "")}>
+      <div className={"flex gap-4 items-center justify-start p-2 hover:bg-gray-700 " + (active ? "bg-gray-700" : "")}>
         <Slot className='w-8 h-8 text-white'> 
           {icon}
         </Slot>
-        <p className="text-gray-100 font-bold text-xs max-w-sm">{name}</p>
+        <Text size="xs" className="max-w-sm">{name}</Text>
       </div>
     </a>
   )
@@ -28,10 +29,8 @@ interface NavBarProps{
 
 function NavBar({ active }: NavBarProps) {
   
-  const [navBarWidth, setNavBarWidth] = useState("w-48")
-
   return (
-    <div className={"p-2 bg-gray-800 h-screen " + navBarWidth}>
+    <div className={"py-2 bg-gray-800 h-screen w-48"}>
       <h2 className="text-gray-100 font-bold text-lg text-center">Administrador</h2>
       <div className="flex gap-8 flex-col mt-7">
         <NavBarItem name="Home" link="/home" icon={<House />} active={active === "Home"}/>

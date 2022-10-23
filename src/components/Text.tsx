@@ -1,16 +1,16 @@
 import { ReactNode } from 'react';
 
 export interface TextProps {
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   children: ReactNode;
   className?: string;
 }
 
-export function Text({ size = 'md', children, className }: TextProps) {
+export function Text({ size = 'xs', children, className }: TextProps) {
 
   return (
     <p 
-      className={'text-gray-100 font-sans' + size + className}
+      className={'text-gray-100 font-sans text-' + size + " " + className}
     >
       {children}
     </p>
