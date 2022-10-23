@@ -16,7 +16,7 @@ function Login() {
           <Text className="font-semibold">Senha</Text>
           <InputText icon={<Lock/>} type="password" id="password" placeholder="********" />
         </label>
-        <Button>Entrar no sistema</Button>
+        <a href="/home"><Button>Entrar no sistema</Button></a>
       </div>
       <div className="h-72 border-r-2"></div>
       <h2 className="text-gray-100 font-bold text-3xl max-w-sm text-center">Sistema de Gestão Integrado</h2>
