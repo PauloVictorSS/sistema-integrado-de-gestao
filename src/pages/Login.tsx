@@ -19,7 +19,7 @@ function Login() {
         <a href="/home"><Button>Entrar no sistema</Button></a>
       </div>
       <div className="h-72 border-r-2"></div>
-      <h2 className="text-gray-100 font-bold text-3xl max-w-sm text-center">Sistema de Gestão Integrado</h2>
+      <h2 className="font-bold text-3xl max-w-sm text-center">Sistema Integrado de Gestão</h2>
     </div>
   );
 }
