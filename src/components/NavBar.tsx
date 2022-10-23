@@ -13,7 +13,7 @@ interface NavBarItemProps{
 function NavBarItem({name, link, icon, active}: NavBarItemProps) {
   return (
     <a href={link}>
-      <div className={"flex gap-4 items-center justify-start p-2 hover:bg-gray-700 " + (active ? "bg-gray-700" : "")}>
+      <div className={"flex gap-4 items-center justify-start p-2 py-3 hover:bg-gray-700 " + (active ? "bg-gray-700" : "")}>
         <Slot className='w-8 h-8 text-white'> 
           {icon}
         </Slot>
@@ -32,7 +32,7 @@ function NavBar({ active }: NavBarProps) {
   return (
     <div className={"py-2 bg-gray-800 h-screen w-48"}>
       <h2 className="text-gray-100 font-bold text-lg text-center">Administrador</h2>
-      <div className="flex gap-8 flex-col mt-7">
+      <div className="flex gap-4 flex-col mt-7">
         <NavBarItem name="Home" link="/home" icon={<House />} active={active === "Home"}/>
         <NavBarItem name="Componentes" link="/components" icon={<PuzzlePiece />} active={active === "Componentes"}/>
         <NavBarItem name="Peças e equipamentos" link="/parts" icon={<Gear />} active={active === "Peças"}/>
