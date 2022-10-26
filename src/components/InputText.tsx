@@ -8,7 +8,7 @@ interface InputText extends InputHTMLAttributes<HTMLInputElement>{
 
 export function InputText({ icon, className, ...props }: InputText) {
   return (
-    <div className={'flex items-center gap-3 h-12 py-2 px-2 rounded bg-gray-800 w-full max-w-sm outline-none focus-within:ring-2 ring-cyan-300 ' + className}>
+    <div className={'flex items-center gap-3 h-12 p-2 rounded bg-gray-800 w-full max-w-sm outline-none focus-within:ring-2 ring-cyan-300 ' + className}>
       <Slot className='w-6 h-6 text-gray-400'>
         {icon}
       </Slot>
