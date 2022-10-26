@@ -7,9 +7,18 @@ import { Slot } from "@radix-ui/react-slot";
 import { InputText } from "../components/InputText";
 import { InputSelect } from "../components/InputSelect";
 import { ComponentsTable } from "../components/ComponentsTable";
+import { useState } from "react";
+import { ComponentsCard } from "../components/ComponentsCard";
+import { IComponent } from "../interfaces/IComponents";
+import { DefaultComponent } from "../utils/constants/DefaultComponent";
 
 function Components() {
 
+  const [isAddComponent, setIsAddComponent] = useState(false)
+  const [seeComponentsCard, setSeeComponentsCard] = useState(false)
+
+  const [componentInfos, setComponentInfos] = useState<IComponent>(DefaultComponent)
+  
   return (
     <ContentDiv>
       <NavBar active="Componentes" />
@@ -17,11 +26,18 @@ function Components() {
       <div className="w-full px-10">
         <h2 className="font-bold text-2xl max-w-sm mx-auto text-center">Gerenciamento de Componentes</h2>
 
-        <Button className="flex items-center gap-4 w-48 mt-8">
-            <Slot className="w-8 h-8 text-white">
-              <PlusCircle/>
-            </Slot>
-            <p className=" font-sans text-xs text-white">Novo componente</p>
+        <Button 
+          className="flex items-center gap-4 w-48 mt-8"
+          onClick={() => {
+            setIsAddComponent(true)
+            setComponentInfos(DefaultComponent)
+            setSeeComponentsCard(!seeComponentsCard)
+          }}
+        >
+          <Slot className="w-8 h-8 text-white">
+            <PlusCircle/>
+          </Slot>
+          <p className=" font-sans text-xs text-white">Novo componente</p>
         </Button>
 
         <div className="flex items-center gap-8 w-full mt-8">
@@ -42,8 +58,23 @@ function Components() {
           </label>
         </div>
 
-        <ComponentsTable />
+        <ComponentsTable 
+          changeComponentsCard={(component:IComponent) => {
+            setIsAddComponent(false)
+            setComponentInfos(component)
+            setSeeComponentsCard(!seeComponentsCard)
+          }}/>
       </div>
+
+      {seeComponentsCard ?
+          <ComponentsCard 
+            isAddComponent={isAddComponent}
+            component={componentInfos} 
+            changeComponentsCard={() => {setSeeComponentsCard(!seeComponentsCard)}}
+          /> 
+        :
+        <></>
+      }
     </ContentDiv>
   )
 }

@@ -1,4 +1,4 @@
-export interface IComponents{
+export interface IComponent{
   id: string
   name: string
   local: string

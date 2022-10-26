@@ -8,23 +8,23 @@ function Home() {
 
   const allNotifications: Array<INotification> =[
     {
-      id: "123",
+      id: "1",
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     },
     {
-      id: "123",
+      id: "2",
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     },
     {
-      id: "123",
+      id: "3",
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     },
     {
-      id: "123",
+      id: "4",
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     },
     {
-      id: "123",
+      id: "5",
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     }
   ]
@@ -39,7 +39,7 @@ function Home() {
             {
               allNotifications.map((notif) => {
                 return (
-                  <NotificationDiv notification={notif} />
+                  <NotificationDiv key={notif.id} notification={notif} />
                 )
               })
             }
@@ -48,7 +48,7 @@ function Home() {
             {
               allNotifications.map((notif) => {
                 return (
-                  <NotificationDiv notification={notif} />
+                  <NotificationDiv key={notif.id} notification={notif} />
                 )
               })
             }
