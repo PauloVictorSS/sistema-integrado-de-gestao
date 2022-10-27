@@ -1,10 +1,10 @@
 import { InputHTMLAttributes } from "react"
 
-interface ITextArea extends InputHTMLAttributes<HTMLTextAreaElement>{
+interface TextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement>{
   className?:string
 }
 
-export function TextArea({className, ...props}:ITextArea){
+export function TextArea({className, ...props}:TextAreaProps){
 
   return(
     <textarea 

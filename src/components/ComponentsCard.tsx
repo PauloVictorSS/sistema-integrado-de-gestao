@@ -6,13 +6,13 @@ import {Text} from "../components/Text";
 import {InputText} from "../components/InputText";
 import { TextArea } from "./TextArea";
 
-interface IComponentsCard{
+interface ComponentsCardProps{
     component: IComponent
     changeComponentsCard: () => void
     isAddComponent: boolean
 }
 
-export function ComponentsCard({component, changeComponentsCard, isAddComponent}: IComponentsCard){
+export function ComponentsCard({component, changeComponentsCard, isAddComponent}: ComponentsCardProps){
 
     return(
         <ModelBackground>

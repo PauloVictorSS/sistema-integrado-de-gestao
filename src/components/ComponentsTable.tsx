@@ -4,12 +4,12 @@ import { Table } from "./Table";
 import { Eye, Trash } from "phosphor-react"
 import { Slot } from "@radix-ui/react-slot";
 
-interface IComponentsTable{
+interface ComponentsTableProps{
   changeComponentsCard: (componentInfos:IComponent) => void
 }
 
 
-export function ComponentsTable({changeComponentsCard}: IComponentsTable) {
+export function ComponentsTable({changeComponentsCard}: ComponentsTableProps) {
 
   const allComponents: Array<IComponent> = [
     {

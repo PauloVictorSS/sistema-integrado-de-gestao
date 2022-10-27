@@ -1,6 +1,6 @@
 import { Slot } from "@radix-ui/react-slot"
 import { House, PuzzlePiece, Gear, FolderUser, ChartLineUp, CurrencyCircleDollar, UserGear, SignOut } from "phosphor-react"
-import { ReactNode, useState } from "react"
+import { ReactNode } from "react"
 import {Text} from "./Text"
 
 interface NavBarItemProps{
