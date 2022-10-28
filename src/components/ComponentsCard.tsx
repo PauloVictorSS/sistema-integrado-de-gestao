@@ -5,15 +5,16 @@ import ModelBackground from "./ModelBackground";
 import {Text} from "../components/Text";
 import {InputText} from "../components/InputText";
 import { TextArea } from "./TextArea";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
 interface ComponentsCardProps{
+    isToAdd: boolean
     component: IComponent
     changeComponentsCard: () => void
-    isAddComponent: boolean
+    changeViewAlertCard: (children:ReactNode, hasButton:boolean) => void
 }
 
-export function ComponentsCard({component, changeComponentsCard, isAddComponent}: ComponentsCardProps){
+export function ComponentsCard({isToAdd, component, changeComponentsCard, changeViewAlertCard}: ComponentsCardProps){
 
     const [componentName, setComponentName] = useState(component.name)
     const [componentQtd, setComponentQtd] = useState(component.qtd)
@@ -22,7 +23,6 @@ export function ComponentsCard({component, changeComponentsCard, isAddComponent}
     const [componentDescription, setComponentDescription] = useState(component.description)
 
     const saveChanges = () => {
-
         const currentComponent = {
             id: component.id,
             name: componentName,
@@ -32,13 +32,17 @@ export function ComponentsCard({component, changeComponentsCard, isAddComponent}
             description: componentDescription,
             lastUpdate: new Date().toLocaleString(),
         } as IComponent
+
+        console.log(currentComponent)
+        changeComponentsCard()
+        changeViewAlertCard("Componente " + (isToAdd ? "adicionado" : "alterado") + " com sucesso!", true)
     }
 
     return(
         <ModelBackground>
             <BoxDiv className="w-96">
                 <h2 className="font-bold text-xl max-w-sm mx-auto text-center mb-4">
-                    {isAddComponent ? "Novo componente" : "Alterar componente"}
+                    {isToAdd ? "Novo componente" : "Alterar componente"}
                 </h2>
                 <div className="flex flex-col gap-6 items-stretch w-full">
                     <label htmlFor="name" className="flex flex-col gap-3">
@@ -95,7 +99,7 @@ export function ComponentsCard({component, changeComponentsCard, isAddComponent}
                         />
                     </label>
                     <div className="flex gap-2 w-full justify-between">
-                        {isAddComponent ? 
+                        {isToAdd ? 
                             <Button onClick={saveChanges}>
                                 Adicionar componente
                             </Button>

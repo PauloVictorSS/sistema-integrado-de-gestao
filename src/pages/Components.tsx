@@ -7,18 +7,54 @@ import { Slot } from "@radix-ui/react-slot";
 import { InputText } from "../components/InputText";
 import { InputSelect } from "../components/InputSelect";
 import { ComponentsTable } from "../components/ComponentsTable";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { ComponentsCard } from "../components/ComponentsCard";
 import { IComponent } from "../interfaces/IComponents";
 import { DefaultComponent } from "../utils/constants/DefaultComponent";
+import { DeleteCard } from "../components/DeleteCard";
+import { AlertCard } from "../components/AlertCard";
 
 function Components() {
 
+  const [alertCardChildren, setAlertCardChildren] = useState<ReactNode>("")
+  const [alertCardHasButton, setAlertCardHasButton] = useState(true)
   const [isAddComponent, setIsAddComponent] = useState(false)
+
+  const [seeAlertCard, setSeeAlertCard] = useState(false)
+  const [seeDeleteCard, setSeeDeleteCard] = useState(false)
   const [seeComponentsCard, setSeeComponentsCard] = useState(false)
 
+  const [idComponentToDelete, setIdComponentToDelete] = useState("")
+  const [nameComponentToDelete, setNameComponentToDelete] = useState("")
+  const [collectionComponentToDelete, setCollectionComponentToDelete] = useState("")
+
   const [componentInfos, setComponentInfos] = useState<IComponent>(DefaultComponent)
-  
+
+  const toAddComponentCard = () => {
+    setIsAddComponent(true)
+    setComponentInfos(DefaultComponent)
+    setSeeComponentsCard(!seeComponentsCard)
+  }
+
+  const toEditComponentCard = (component:IComponent) => {
+    setIsAddComponent(false)
+    setComponentInfos(component)
+    setSeeComponentsCard(!seeComponentsCard)
+  }
+
+  const changeViewAlertCard = (children: ReactNode, hasButton:boolean) => {
+    setAlertCardChildren(children)
+    setAlertCardHasButton(hasButton)
+    setSeeAlertCard(!seeAlertCard)
+  }
+
+  const changeViewDeleteCard = (id: string, name: string, collection: string) => {
+    setIdComponentToDelete(id)
+    setNameComponentToDelete(name)
+    setCollectionComponentToDelete(collection)
+    setSeeDeleteCard(!seeDeleteCard)
+  }
+
   return (
     <ContentDiv>
       <NavBar active="Componentes" />
@@ -26,14 +62,7 @@ function Components() {
       <div className="w-full px-10">
         <h2 className="font-bold text-2xl max-w-sm mx-auto text-center">Gerenciamento de Componentes</h2>
 
-        <Button 
-          className="flex items-center gap-4 w-48 mt-8"
-          onClick={() => {
-            setIsAddComponent(true)
-            setComponentInfos(DefaultComponent)
-            setSeeComponentsCard(!seeComponentsCard)
-          }}
-        >
+        <Button className="flex items-center gap-4 w-48 mt-8" onClick={toAddComponentCard}>
           <Slot className="w-8 h-8 text-white">
             <PlusCircle/>
           </Slot>
@@ -58,22 +87,32 @@ function Components() {
           </label>
         </div>
 
-        <ComponentsTable 
-          changeComponentsCard={(component:IComponent) => {
-            setIsAddComponent(false)
-            setComponentInfos(component)
-            setSeeComponentsCard(!seeComponentsCard)
-          }}/>
+        <ComponentsTable toEditComponent={toEditComponentCard} toDeleteComponent={changeViewDeleteCard}/>
       </div>
 
-      {seeComponentsCard ?
-          <ComponentsCard 
-            isAddComponent={isAddComponent}
-            component={componentInfos} 
-            changeComponentsCard={() => {setSeeComponentsCard(!seeComponentsCard)}}
-          /> 
-        :
-        <></>
+      {seeAlertCard &&
+        <AlertCard hasButton={alertCardHasButton} changeAlertCard={() => { setSeeAlertCard(!seeAlertCard) }}>
+          {alertCardChildren}
+        </AlertCard>
+      }
+
+      {seeComponentsCard &&
+        <ComponentsCard 
+          isToAdd={isAddComponent}
+          component={componentInfos} 
+          changeComponentsCard={() => { setSeeComponentsCard(!seeComponentsCard) }}
+          changeViewAlertCard={changeViewAlertCard}
+        />
+      }
+
+      {seeDeleteCard &&
+        <DeleteCard 
+          idItem={idComponentToDelete}
+          nameItem={nameComponentToDelete}
+          collectionItem={collectionComponentToDelete}
+          changeDeleteCard={() => {setSeeDeleteCard(!seeDeleteCard)}}
+          changeViewAlertCard={changeViewAlertCard}
+        />
       }
     </ContentDiv>
   )

@@ -5,11 +5,11 @@ import { Eye, Trash } from "phosphor-react"
 import { Slot } from "@radix-ui/react-slot";
 
 interface ComponentsTableProps{
-  changeComponentsCard: (componentInfos:IComponent) => void
+  toEditComponent: (componentInfos: IComponent) => void
+  toDeleteComponent: (id:string, name:string, collection: string) => void
 }
 
-
-export function ComponentsTable({changeComponentsCard}: ComponentsTableProps) {
+export function ComponentsTable({toEditComponent, toDeleteComponent}: ComponentsTableProps) {
 
   const allComponents: Array<IComponent> = [
     {
@@ -85,12 +85,17 @@ export function ComponentsTable({changeComponentsCard}: ComponentsTableProps) {
                   <Button 
                     className="flex items-center justify-center px-0" 
                     onClick={() => {
-                      changeComponentsCard(component)
+                      toEditComponent(component)
                     }}
                   >
                     <Slot className='w-5 h-5 text-white'><Eye /></Slot>
                   </Button>
-                  <Button className="flex items-center justify-center px-0">
+                  <Button
+                    className="flex items-center justify-center px-0"
+                    onClick={() => {
+                      toDeleteComponent(component.id, component.name, "components")
+                    }}
+                  >
                     <Slot className='w-5 h-5 text-white'><Trash /></Slot>
                   </Button>
                 </Table.td>
