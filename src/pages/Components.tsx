@@ -10,9 +10,10 @@ import { ComponentsTable } from "../components/ComponentsTable";
 import { ReactNode, useState } from "react";
 import { ComponentsCard } from "../components/ComponentsCard";
 import { IComponent } from "../interfaces/IComponents";
-import { DefaultComponent } from "../utils/constants/DefaultComponent";
+import { defaultComponent } from "../utils/constants/defaultComponent";
 import { DeleteCard } from "../components/DeleteCard";
 import { AlertCard } from "../components/AlertCard";
+import { componentSorterOptions } from "../interfaces/ISearchParameters";
 
 function Components() {
 
@@ -24,15 +25,19 @@ function Components() {
   const [seeDeleteCard, setSeeDeleteCard] = useState(false)
   const [seeComponentsCard, setSeeComponentsCard] = useState(false)
 
+  const [searchComponent, setSearchComponent] = useState("")
+  const [localComponent, setLocalComponent] = useState("")
+  const [orderByComponent, setOrderByComponent] = useState<componentSorterOptions>("name")
+
   const [idComponentToDelete, setIdComponentToDelete] = useState("")
   const [nameComponentToDelete, setNameComponentToDelete] = useState("")
   const [collectionComponentToDelete, setCollectionComponentToDelete] = useState("")
 
-  const [componentInfos, setComponentInfos] = useState<IComponent>(DefaultComponent)
+  const [componentInfos, setComponentInfos] = useState<IComponent>(defaultComponent)
 
   const toAddComponentCard = () => {
     setIsAddComponent(true)
-    setComponentInfos(DefaultComponent)
+    setComponentInfos(defaultComponent)
     setSeeComponentsCard(!seeComponentsCard)
   }
 
@@ -62,32 +67,40 @@ function Components() {
       <div className="w-full px-10">
         <h2 className="font-bold text-2xl max-w-sm mx-auto text-center">Gerenciamento de Componentes</h2>
 
-        <Button className="flex items-center gap-4 w-48 mt-8" onClick={toAddComponentCard}>
+        <Button className="flex items-center gap-4 w-48 mt-4" onClick={toAddComponentCard}>
           <Slot className="w-8 h-8 text-white">
             <PlusCircle/>
           </Slot>
           <p className=" font-sans text-xs text-white">Novo componente</p>
         </Button>
 
-        <div className="flex items-center gap-8 w-full mt-8">
-          <label htmlFor="text" className="flex flex-col gap-3">
+        <div className="flex items-center gap-8 w-full mt-4">
+          <label htmlFor="search" className="flex flex-col gap-3">
             <Text className="font-semibold">Pesquisa</Text>
-            <InputText className="w-96" icon={<PuzzlePiece/>} type="text" id="text" placeholder="Digite um nome ou descrição de algum componente" />
+            <InputText className="w-96" icon={<PuzzlePiece />} type="text" id="search" placeholder="Digite um nome ou descrição de algum componente" value={searchComponent} onChange={(e) => {setSearchComponent(e.target.value)}}/>
           </label>
           <label htmlFor="local" className="flex flex-col gap-3">
             <Text className="font-semibold">Gaveta</Text>
-            <InputText className="w-64" icon={<ShoppingBag/>} type="text" id="local" placeholder="Digite G + “número da gaveta”" />
+            <InputText className="w-64" icon={<ShoppingBag/>} type="text" id="local" placeholder="Digite G + “número da gaveta”" value={localComponent} onChange={(e) => {setLocalComponent(e.target.value)}}/>
           </label>
-          <label htmlFor="local" className="flex flex-col gap-3">
+          <label htmlFor="order" className="flex flex-col gap-3">
             <Text className="font-semibold">Ordenar por</Text>
-            <InputSelect>
-              <option value="">Nome</option>
-              <option value="">Data de Última alteração</option>
+            <InputSelect id="order" value={orderByComponent} onChange={(e) => {setOrderByComponent(e.target.value as componentSorterOptions)}}>
+              <option value="name">Nome</option>
+              <option value="lastUpdate">Data de Última alteração</option>
             </InputSelect>
           </label>
         </div>
 
-        <ComponentsTable toEditComponent={toEditComponentCard} toDeleteComponent={changeViewDeleteCard}/>
+        <ComponentsTable
+          toEditComponent={toEditComponentCard}
+          toDeleteComponent={changeViewDeleteCard}
+          searchParameters={{
+            search: searchComponent.toLocaleLowerCase(),
+            local: localComponent.toLocaleLowerCase(),
+            orderBy: orderByComponent
+          }}
+        />
       </div>
 
       {seeAlertCard &&
