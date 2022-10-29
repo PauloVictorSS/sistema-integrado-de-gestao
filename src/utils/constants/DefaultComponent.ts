@@ -1,6 +1,6 @@
 import { IComponent } from "../../interfaces/IComponents";
 
-export const DefaultComponent  = {
+export const defaultComponent  = {
     id: "",
     name: "",
     qtd: 0,
