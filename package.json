@@ -5,7 +5,7 @@
   "homepage": "./",
   "private": true,
   "dependencies": {
-    "@electron/remote": "^0.0.1",
+    "@electron/remote": "^2.0.8",
     "@radix-ui/react-checkbox": "^1.0.0",
     "@radix-ui/react-slot": "^1.0.0",
     "@testing-library/jest-dom": "^5.16.5",
