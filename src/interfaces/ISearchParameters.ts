@@ -5,3 +5,7 @@ export interface ISearchParametersComponent{
   local: string
   orderBy: componentSorterOptions
 }
+
+export interface ISearchParametersPartsAndEquipaments{
+  search: string
+}
