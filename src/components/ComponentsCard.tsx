@@ -6,15 +6,17 @@ import {Text} from "../components/Text";
 import {InputText} from "../components/InputText";
 import { TextArea } from "./TextArea";
 import { ReactNode, useState } from "react";
+import { Component } from "../functions/componentsFunctions";
 
 interface ComponentsCardProps{
     isToAdd: boolean
     component: IComponent
     changeComponentsCard: () => void
     changeViewAlertCard: (children:ReactNode, hasButton:boolean) => void
+    refresh: () => void
 }
 
-export function ComponentsCard({isToAdd, component, changeComponentsCard, changeViewAlertCard}: ComponentsCardProps){
+export function ComponentsCard({isToAdd, component, changeComponentsCard, changeViewAlertCard, refresh}: ComponentsCardProps){
 
     const [componentName, setComponentName] = useState(component.name)
     const [componentQtd, setComponentQtd] = useState(component.qtd)
@@ -22,7 +24,7 @@ export function ComponentsCard({isToAdd, component, changeComponentsCard, change
     const [componentLocal, setComponentLocal] = useState(component.local)
     const [componentDescription, setComponentDescription] = useState(component.description)
 
-    const saveChanges = () => {
+    const saveChanges = async () => {
         const currentComponent = {
             id: component.id,
             name: componentName,
@@ -30,10 +32,16 @@ export function ComponentsCard({isToAdd, component, changeComponentsCard, change
             qtdMin: componentQtdMin,
             local: componentLocal,
             description: componentDescription,
-            lastUpdate: new Date().toLocaleString(),
+            lastUpdate: new Date(),
         } as IComponent
 
-        console.log(currentComponent)
+        if (isToAdd)
+            await Component.addNewComponent(currentComponent)
+        else
+            await Component.saveComponent(currentComponent)
+
+        refresh()
+
         changeComponentsCard()
         changeViewAlertCard("Componente " + (isToAdd ? "adicionado" : "alterado") + " com sucesso!", true)
     }
@@ -78,12 +86,12 @@ export function ComponentsCard({isToAdd, component, changeComponentsCard, change
                             onChange={(e) => setComponentQtdMin(parseInt(e.target.value))}
                         />
                     </label>
-                    <label htmlFor="local" className="flex flex-col gap-3">
+                    <label htmlFor="localCard" className="flex flex-col gap-3">
                         <Text className="font-semibold">Local de armazenamento</Text>
                         <InputText
                             className="bg-gray-900"
                             type="text"
-                            id="local"
+                            id="localCard"
                             placeholder="gaveta onde está o componente"
                             value={componentLocal}
                             onChange={(e) => setComponentLocal(e.target.value)}

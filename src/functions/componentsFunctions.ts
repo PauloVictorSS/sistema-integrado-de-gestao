@@ -1,5 +1,5 @@
 import { db } from "../config/firebase"
-import { collection, query, getDocs } from "firebase/firestore"; 
+import { collection, query, getDocs, doc, setDoc, addDoc } from "firebase/firestore"; 
 import { IComponent } from "../interfaces/IComponents";
 import { componentSorterOptions, ISearchParametersComponent } from "../interfaces/ISearchParameters";
 
@@ -81,4 +81,23 @@ const applyFilters = (allComponents:Array<IComponent>, currentPage:number, searc
   return filteredComponents
 }
 
-export const Component = { getAll, applyFilters }
+const addNewComponent = async (infos:IComponent) => {
+
+  await addDoc(collection(db, "components"), infos);
+}
+
+const saveComponent = async (infos:IComponent) => {
+
+  const infosWithoutID = {
+    name: infos.name,
+    local: infos.local,
+    qtd: infos.qtd,
+    qtdMin: infos.qtdMin,
+    description: infos.description,
+    lastUpdate: infos.lastUpdate
+  }
+  
+  await setDoc(doc(db, "components", infos.id), infosWithoutID);
+}
+
+export const Component = { getAll, applyFilters, addNewComponent, saveComponent }

@@ -5,5 +5,5 @@ export interface IComponent{
   qtd: number
   qtdMin: number
   description: string
-  lastUpdate: string
+  lastUpdate: Date
 }

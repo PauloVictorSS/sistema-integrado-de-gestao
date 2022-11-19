@@ -10,7 +10,7 @@ import { ComponentsTable } from "../components/ComponentsTable";
 import { ReactNode, useState } from "react";
 import { ComponentsCard } from "../components/ComponentsCard";
 import { IComponent } from "../interfaces/IComponents";
-import { defaultComponent } from "../utils/constants/defaultComponent";
+import { defaultComponent } from "../utils/constants/DefaultComponent";
 import { DeleteCard } from "../components/DeleteCard";
 import { AlertCard } from "../components/AlertCard";
 import { componentSorterOptions } from "../interfaces/ISearchParameters";
@@ -32,6 +32,8 @@ function Components() {
   const [idComponentToDelete, setIdComponentToDelete] = useState("")
   const [nameComponentToDelete, setNameComponentToDelete] = useState("")
   const [collectionComponentToDelete, setCollectionComponentToDelete] = useState("")
+
+  const [refresh, setRefresh] = useState(true)
 
   const [componentInfos, setComponentInfos] = useState<IComponent>(defaultComponent)
 
@@ -100,6 +102,7 @@ function Components() {
             local: localComponent.toLocaleLowerCase(),
             orderBy: orderByComponent
           }}
+          refresh={refresh}
         />
       </div>
 
@@ -115,6 +118,7 @@ function Components() {
           component={componentInfos} 
           changeComponentsCard={() => { setSeeComponentsCard(!seeComponentsCard) }}
           changeViewAlertCard={changeViewAlertCard}
+          refresh={() => {setRefresh(!refresh)}}
         />
       }
 
@@ -125,6 +129,7 @@ function Components() {
           collectionItem={collectionComponentToDelete}
           changeDeleteCard={() => {setSeeDeleteCard(!seeDeleteCard)}}
           changeViewAlertCard={changeViewAlertCard}
+          refresh={() => {setRefresh(!refresh)}}
         />
       }
     </ContentDiv>

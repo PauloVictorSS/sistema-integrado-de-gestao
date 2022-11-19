@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { GeneralFunctions } from "../functions/generalFunctions";
 import BoxDiv from "./BoxDiv";
 import { Button } from "./Button";
 import ModelBackground from "./ModelBackground";
@@ -8,16 +9,18 @@ interface DeleteCardProps{
     idItem: string
     nameItem: string
     collectionItem: string
+    refresh: () => void
     changeDeleteCard: () => void
     changeViewAlertCard: (children:ReactNode, hasButton:boolean) => void
 }
 
-export function DeleteCard({ idItem, nameItem, collectionItem, changeDeleteCard, changeViewAlertCard }: DeleteCardProps) {
+export function DeleteCard({ idItem, nameItem, collectionItem, changeDeleteCard, changeViewAlertCard, refresh }: DeleteCardProps) {
   
-  const deleteItem = () => {
-    console.log(idItem);
-    console.log(collectionItem);
+  const deleteItem = async () => {
 
+    await GeneralFunctions.deleteItem(collectionItem, idItem);
+
+    refresh()
     changeDeleteCard()
     changeViewAlertCard("Item deletado com sucesso!", true)
   }

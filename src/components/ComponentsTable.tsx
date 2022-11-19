@@ -14,9 +14,10 @@ interface ComponentsTableProps{
   toEditComponent: (componentInfos: IComponent) => void
   toDeleteComponent: (id: string, name: string, collection: string) => void
   searchParameters: ISearchParametersComponent
+  refresh: boolean
 }
 
-export function ComponentsTable({toEditComponent, toDeleteComponent, searchParameters}: ComponentsTableProps) {
+export function ComponentsTable({toEditComponent, toDeleteComponent, searchParameters, refresh}: ComponentsTableProps) {
 
   const [allComponents, setAllComponents] = useState<IComponent[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -38,7 +39,7 @@ export function ComponentsTable({toEditComponent, toDeleteComponent, searchParam
 
   useEffect(() => {
     getAllComponents()
-  }, [])
+  }, [refresh])
 
   return (
     <>
@@ -64,7 +65,7 @@ export function ComponentsTable({toEditComponent, toDeleteComponent, searchParam
                         <Table.td>{component.qtd}</Table.td>
                         <Table.td>{component.local}</Table.td>
                         <Table.td>{component.description}</Table.td>
-                        <Table.td>{component.lastUpdate}</Table.td>
+                        <Table.td>{component.lastUpdate.toLocaleString()}</Table.td>
                         <Table.td className="flex gap-4">
                           <Button 
                             className="flex items-center justify-center px-0" 

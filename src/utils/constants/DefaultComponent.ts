@@ -7,5 +7,5 @@ export const defaultComponent  = {
     qtdMin: 0,
     local: "",
     description: "",
-    lastUpdate: ""
+    lastUpdate: new Date()
 } as IComponent
