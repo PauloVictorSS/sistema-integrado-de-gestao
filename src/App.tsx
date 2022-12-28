@@ -7,7 +7,7 @@ import {
 import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Components from "./pages/Components"
-import PartsAndEquipaments from "./pages/PartsAndEquipaments"
+import Equipments from "./pages/Equipments"
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<Login/>} />
         <Route path="/home" element={<Home/>} />
         <Route path="/components" element={<Components/>} />
-        <Route path="/parts" element={<PartsAndEquipaments/>} />
+        <Route path="/parts" element={<Equipments/>} />
       </Routes>
     </Router>
   )

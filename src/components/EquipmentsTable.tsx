@@ -1,44 +1,44 @@
-import { IPartsAndEquipaments } from "../interfaces/IPartsAndEquipaments";
+import { IEquipments } from "../interfaces/IEquipments";
 import { Button } from "./Button";
 import { Table } from "./Table";
 import { Eye, Trash } from "phosphor-react"
 import { Slot } from "@radix-ui/react-slot";
 import { useEffect, useState } from "react";
-import { PartsAndEquipaments } from "../functions/partsAndEquipamentsFunctions";
+import { Equipments } from "../functions/EquipmentsFunctions";
 import { getAvaliablePages } from "../utils/helpers/pagination";
 import { PaginationDiv } from "./PaginationDiv";
-import { ISearchParametersPartsAndEquipaments } from "../interfaces/ISearchParameters";
+import { ISearchParametersEquipments } from "../interfaces/ISearchParameters";
 import { Loading } from "./Loading";
 
-interface PartsAndEquipamentsTableProps{
-  toEditPartsAndEquipaments: (PartsAndEquipamentsInfos: IPartsAndEquipaments) => void
-  toDeletePartsAndEquipaments: (id: string, name: string, collection: string) => void
-  searchParameters: ISearchParametersPartsAndEquipaments
+interface EquipmentsTableProps{
+  toEditEquipments: (EquipmentsInfos: IEquipments) => void
+  toDeleteEquipments: (id: string, name: string, collection: string) => void
+  searchParameters: ISearchParametersEquipments
   refresh: boolean
 }
 
-export function PartsAndEquipamentsTable({toEditPartsAndEquipaments, toDeletePartsAndEquipaments, searchParameters, refresh}: PartsAndEquipamentsTableProps) {
+export function EquipmentsTable({toEditEquipments, toDeleteEquipments, searchParameters, refresh}: EquipmentsTableProps) {
 
-  const [allPartsAndEquipaments, setAllPartsAndEquipaments] = useState<IPartsAndEquipaments[]>([])
+  const [allEquipments, setAllEquipments] = useState<IEquipments[]>([])
   const [isLoading, setIsLoading] = useState(true)
  
   const [allPages, setAllPages] = useState<number[]>([])
   const [currentPage, setCurrentPage] = useState(1)
 
-  const filteredPartsAndEquipaments = PartsAndEquipaments.applyFilters(allPartsAndEquipaments, currentPage, searchParameters)
+  const filteredEquipments = Equipments.applyFilters(allEquipments, currentPage, searchParameters)
 
-  const getAllPartsAndEquipaments = async () => {
+  const getAllEquipments = async () => {
     setIsLoading(true)
     
-    let newAllPartsAndEquipaments = await PartsAndEquipaments.getAll()
+    let newAllEquipments = await Equipments.getAll()
 
-    setAllPages(getAvaliablePages(newAllPartsAndEquipaments))
-    setAllPartsAndEquipaments(newAllPartsAndEquipaments)
+    setAllPages(getAvaliablePages(newAllEquipments))
+    setAllEquipments(newAllEquipments)
     setIsLoading(false)
   }
 
   useEffect(() => {
-    getAllPartsAndEquipaments()
+    getAllEquipments()
   }, [refresh])
 
   return (
@@ -57,19 +57,19 @@ export function PartsAndEquipamentsTable({toEditPartsAndEquipaments, toDeletePar
               </Table.thead>
               <Table.tbody>
                 {
-                  filteredPartsAndEquipaments.map(partsAndEquipaments => {
+                  filteredEquipments.map(Equipments => {
                     return (
-                      <Table.tr key={partsAndEquipaments.id}>
-                        <Table.td>{partsAndEquipaments.qtd}</Table.td>
-                        <Table.td>{partsAndEquipaments.application}</Table.td>
-                        <Table.td>{partsAndEquipaments.brand}</Table.td>
-                        <Table.td>{partsAndEquipaments.model}</Table.td>
-                        <Table.td>{partsAndEquipaments.type}</Table.td>
+                      <Table.tr key={Equipments.id}>
+                        <Table.td>{Equipments.application}</Table.td>
+                        <Table.td>{Equipments.brand}</Table.td>
+                        <Table.td>{Equipments.model}</Table.td>
+                        <Table.td>{Equipments.type}</Table.td>
+                        <Table.td>{Equipments.qtd}</Table.td>
                         <Table.td className="flex gap-4">
                           <Button 
                             className="flex items-center justify-center px-0" 
                             onClick={() => {
-                              toEditPartsAndEquipaments(partsAndEquipaments)
+                              toEditEquipments(Equipments)
                             }}
                           >
                             <Slot className='w-5 h-5 text-white'><Eye /></Slot>
@@ -77,7 +77,7 @@ export function PartsAndEquipamentsTable({toEditPartsAndEquipaments, toDeletePar
                           <Button
                             className="flex items-center justify-center px-0"
                             onClick={() => {
-                              toDeletePartsAndEquipaments(partsAndEquipaments.id, partsAndEquipaments.model, "partsAndEquipaments")
+                              toDeleteEquipments(Equipments.id, Equipments.model, "partsAndEquipments")
                             }}
                           >
                             <Slot className='w-5 h-5 text-white'><Trash /></Slot>

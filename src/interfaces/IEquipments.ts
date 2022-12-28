@@ -1,4 +1,4 @@
-export interface IPartsAndEquipaments{
+export interface IEquipments{
     id: string
     application: string
     model: string

@@ -6,6 +6,6 @@ export interface ISearchParametersComponent{
   orderBy: componentSorterOptions
 }
 
-export interface ISearchParametersPartsAndEquipaments{
+export interface ISearchParametersEquipments{
   search: string
 }
