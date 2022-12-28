@@ -5,5 +5,8 @@ export function getAvaliablePages(allElement: Array<any>) {
   for (let index = 1; index <= numberTotalPages; index++) 
     avaliablePages.push(index)
   
+  console.log(avaliablePages);
+  
+  
   return avaliablePages
 }
