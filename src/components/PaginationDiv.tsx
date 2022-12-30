@@ -14,7 +14,7 @@ export function PaginationDiv({ allPages, currentPage, setCurrentPage }: Paginat
   
     let viewPages = []
 
-    if(currentPage < 4)
+    if(currentPage <= 4)
       viewPages = allPages.slice(0, 5)
     else if(currentPage > (allPages.length - 2))
       viewPages = allPages.slice(allPages.length - 5, allPages.length)

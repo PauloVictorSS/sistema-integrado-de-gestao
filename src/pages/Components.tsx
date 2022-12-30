@@ -61,7 +61,7 @@ function Components() {
     setCollectionComponentToDelete(collection)
     setSeeDeleteCard(!seeDeleteCard)
   }
-
+  
   return (
     <ContentDiv>
       <NavBar active="Componentes" />

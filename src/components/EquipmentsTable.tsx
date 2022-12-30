@@ -22,17 +22,17 @@ export function EquipmentsTable({toEditEquipments, toDeleteEquipments, searchPar
   const [allEquipments, setAllEquipments] = useState<IEquipments[]>([])
   const [isLoading, setIsLoading] = useState(true)
  
-  const [allPages, setAllPages] = useState<number[]>([])
   const [currentPage, setCurrentPage] = useState(1)
 
-  const filteredEquipments = Equipments.applyFilters(allEquipments, currentPage, searchParameters)
+  const filteredEquipments = Equipments.applyFilters(allEquipments, searchParameters)
+  const allPages = getAvaliablePages(filteredEquipments)
+  const paginatedEquipments = Equipments.applyPagination(filteredEquipments, currentPage)
 
   const getAllEquipments = async () => {
     setIsLoading(true)
     
     let newAllEquipments = await Equipments.getAll()
 
-    setAllPages(getAvaliablePages(newAllEquipments))
     setAllEquipments(newAllEquipments)
     setIsLoading(false)
   }
@@ -57,7 +57,7 @@ export function EquipmentsTable({toEditEquipments, toDeleteEquipments, searchPar
               </Table.thead>
               <Table.tbody>
                 {
-                  filteredEquipments.map(Equipments => {
+                  paginatedEquipments.map(Equipments => {
                     return (
                       <Table.tr key={Equipments.id}>
                         <Table.td>{Equipments.application}</Table.td>

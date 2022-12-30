@@ -64,7 +64,7 @@ const orderComponents = (filteredComponents:IComponent[], orderBy:componentSorte
   return filteredComponents
 }
 
-const applyFilters = (allComponents:Array<IComponent>, currentPage:number, searchParameters:ISearchParametersComponent) => {
+const applyFilters = (allComponents:Array<IComponent>, searchParameters:ISearchParametersComponent) => {
   let filteredComponents: Array<IComponent> = []
 
   filteredComponents = allComponents
@@ -76,9 +76,12 @@ const applyFilters = (allComponents:Array<IComponent>, currentPage:number, searc
   }
 
   filteredComponents = orderComponents(filteredComponents, searchParameters.orderBy)
-  filteredComponents = filteredComponents.slice((currentPage - 1) * 8, (currentPage - 1) * 8 + 8)
-
   return filteredComponents
+}
+
+const applyPagination = (filteredComponents: Array<IComponent>, currentPage: number) => {
+  
+  return filteredComponents.slice((currentPage - 1) * 8, (currentPage - 1) * 8 + 8)
 }
 
 const addNewComponent = async (infos:IComponent) => {
@@ -100,4 +103,4 @@ const saveComponent = async (infos:IComponent) => {
   await setDoc(doc(db, "components", infos.id), infosWithoutID);
 }
 
-export const Component = { getAll, applyFilters, addNewComponent, saveComponent }
+export const Component = { getAll, applyFilters, addNewComponent, saveComponent, applyPagination }

@@ -22,17 +22,17 @@ export function ComponentsTable({toEditComponent, toDeleteComponent, searchParam
   const [allComponents, setAllComponents] = useState<IComponent[]>([])
   const [isLoading, setIsLoading] = useState(true)
  
-  const [allPages, setAllPages] = useState<number[]>([])
   const [currentPage, setCurrentPage] = useState(1)
 
-  const filteredComponents = Component.applyFilters(allComponents, currentPage, searchParameters)
+  const filteredComponents = Component.applyFilters(allComponents, searchParameters)
+  const allPages = getAvaliablePages(filteredComponents)
+  const paginatedComponents = Component.applyPagination(filteredComponents, currentPage)
 
   const getAllComponents = async () => {
     setIsLoading(true)
     
     let newAllComponents = await Component.getAll()
 
-    setAllPages(getAvaliablePages(newAllComponents))
     setAllComponents(newAllComponents)
     setIsLoading(false)
   }
@@ -58,7 +58,7 @@ export function ComponentsTable({toEditComponent, toDeleteComponent, searchParam
               </Table.thead>
               <Table.tbody>
                 {
-                  filteredComponents.map(component => {
+                  paginatedComponents.map(component => {
                     return (
                       <Table.tr key={component.id}>
                         <Table.td>{component.name}</Table.td>

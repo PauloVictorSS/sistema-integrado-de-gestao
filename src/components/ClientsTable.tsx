@@ -9,6 +9,7 @@ import { getAvaliablePages } from "../utils/helpers/pagination";
 import { PaginationDiv } from "./PaginationDiv";
 import { ISearchParametersClients } from "../interfaces/ISearchParameters";
 import { Loading } from "./Loading";
+import { getStringValue } from "../utils/helpers/verifications";
 
 interface ClientsTableProps{
   toEditClient: (clientInfos: IClient) => void
@@ -22,17 +23,17 @@ export function ClientsTable({toEditClient, toDeleteClient, searchParameters, re
   const [allClients, setAllClients] = useState<IClient[]>([])
   const [isLoading, setIsLoading] = useState(true)
  
-  const [allPages, setAllPages] = useState<number[]>([])
   const [currentPage, setCurrentPage] = useState(1)
 
-  const filteredClients = Client.applyFilters(allClients, currentPage, searchParameters)
+  const filteredClients = Client.applyFilters(allClients, searchParameters)
+  const allPages = getAvaliablePages(filteredClients)
+  const paginatedClients = Client.applyPagination(filteredClients, currentPage)
 
   const getAllClients = async () => {
     setIsLoading(true)
     
     let newAllClients = await Client.getAll()
 
-    setAllPages(getAvaliablePages(newAllClients))
     setAllClients(newAllClients)
     setIsLoading(false)
   }
@@ -58,14 +59,14 @@ export function ClientsTable({toEditClient, toDeleteClient, searchParameters, re
               </Table.thead>
               <Table.tbody>
                 {
-                  filteredClients.map(client => {
+                  paginatedClients.map(client => {
                     return (
                       <Table.tr key={client.id}>
                         <Table.td>{client.id}</Table.td>
                         <Table.td>{client.name}</Table.td>
-                        <Table.td>{client.firstDate.split('-').reverse().join('/')}</Table.td>
-                        <Table.td>{client.equipment} - {client.brand} - {client.model}</Table.td>
-                        <Table.td>{client.approval} - {client.done}</Table.td>
+                        <Table.td>{getStringValue(client.firstDate).split('-').reverse().join('/')}</Table.td>
+                        <Table.td>{getStringValue(client.equipment)} - {getStringValue(client.brand)} - {getStringValue(client.model)}</Table.td>
+                        <Table.td>{getStringValue(client.approval)} - {getStringValue(client.done)}</Table.td>
                         <Table.td className="flex gap-4">
                           <Button 
                             className="flex items-center justify-center px-0" 

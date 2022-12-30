@@ -107,7 +107,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                     <h2 className="text-xl font-bold">{"Ordem de serviço nº" + serviceNumber}</h2>
                 </div>
                 <div className="flex flex-col gap-4 items-stretch w-full mt-2">
-                <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between">
                         <label htmlFor="firstDate" className="flex flex-col gap-1 w-64">
                             <Text className="font-semibold">Data de entrada</Text>
                             <InputText

@@ -80,7 +80,7 @@ const orderClients = (filteredClients:IClient[], orderBy:clientSorterOptions) =>
   return filteredClients
 }
 
-const applyFilters = (allClients:Array<IClient>, currentPage:number, searchParameters:ISearchParametersClients) => {
+const applyFilters = (allClients:Array<IClient>, searchParameters:ISearchParametersClients) => {
   let filteredClients: Array<IClient> = []
 
   filteredClients = allClients
@@ -92,14 +92,16 @@ const applyFilters = (allClients:Array<IClient>, currentPage:number, searchParam
   }
 
   filteredClients = orderClients(filteredClients, searchParameters.orderBy)
-  filteredClients = filteredClients.slice((currentPage - 1) * 8, (currentPage - 1) * 8 + 8)
 
   return filteredClients
 }
 
-const saveClient = async (infos:IClient) => {
+const applyPagination = (filteredClients:Array<IClient>, currentPage:number) => {
+  
+  return filteredClients.slice((currentPage - 1) * 8, (currentPage - 1) * 8 + 8)
+}
 
-  console.log(infos);
+const saveClient = async (infos:IClient) => {
 
   const infosWithoutID = {
     firstDate: infos.firstDate,
@@ -126,4 +128,4 @@ const saveClient = async (infos:IClient) => {
   await setDoc(doc(db, "clients", infos.id), infosWithoutID);
 }
 
-export const Client = { getAll, applyFilters, saveClient }
+export const Client = { getAll, applyFilters, saveClient, applyPagination }

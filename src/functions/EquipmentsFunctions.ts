@@ -41,7 +41,7 @@ const filterEquipments = (Equipments:IEquipments, searchParameters:ISearchParame
   return EquipmentsHasTheAttributes
 }
 
-const applyFilters = (allEquipments:Array<IEquipments>, currentPage:number, searchParameters:ISearchParametersEquipments) => {
+const applyFilters = (allEquipments:Array<IEquipments>, searchParameters:ISearchParametersEquipments) => {
   let filteredEquipments: Array<IEquipments> = []
 
   filteredEquipments = allEquipments
@@ -52,9 +52,11 @@ const applyFilters = (allEquipments:Array<IEquipments>, currentPage:number, sear
     })
   }
 
-  filteredEquipments = filteredEquipments.slice((currentPage - 1) * 8, (currentPage - 1) * 8 + 8)
-
   return filteredEquipments
+}
+
+const applyPagination = (filteredEquipments:Array<IEquipments>, currentPage:number) => {
+  return filteredEquipments.slice((currentPage - 1) * 8, (currentPage - 1) * 8 + 8)
 }
 
 const addNewEquipments = async (infos:IEquipments) => {
@@ -75,4 +77,4 @@ const saveEquipments = async (infos:IEquipments) => {
   await setDoc(doc(db, "partsAndEquipaments", infos.id), infosWithoutID);
 }
 
-export const Equipments = { getAll, applyFilters, addNewEquipments, saveEquipments }
+export const Equipments = { getAll, applyFilters, addNewEquipments, saveEquipments, applyPagination }
