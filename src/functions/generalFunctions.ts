@@ -28,6 +28,4 @@ const updateNumberNewServiceOrder = async () => {
   }
 }
 
-
-
 export const GeneralFunctions = {deleteItem, getNumberNewServiceOrder, updateNumberNewServiceOrder}
