@@ -1,6 +1,6 @@
 import { db } from "../config/firebase"
 import { collection, query, getDocs, doc, setDoc, addDoc } from "firebase/firestore"; 
-import { IClient } from "../interfaces/IClients";
+import { IClient } from "../interfaces/IClient";
 import { clientSorterOptions, ISearchParametersClients } from "../interfaces/ISearchParameters";
 import { getDefinedValue } from "../utils/helpers/verifications";
 

@@ -1,6 +1,6 @@
 import { db } from "../config/firebase"
 import { collection, query, getDocs, doc, setDoc, addDoc } from "firebase/firestore"; 
-import { IComponent } from "../interfaces/IComponents";
+import { IComponent } from "../interfaces/IComponent";
 import { componentSorterOptions, ISearchParametersComponent } from "../interfaces/ISearchParameters";
 
 const getAll = async () => {

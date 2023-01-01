@@ -1,4 +1,4 @@
-import { IClient } from "../interfaces/IClients"
+import { IClient } from "../interfaces/IClient"
 
 export interface IRepairsInPeriod {
 

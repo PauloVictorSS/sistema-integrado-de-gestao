@@ -1,4 +1,4 @@
-import { IEquipments } from "../../interfaces/IEquipments";
+import { IEquipment } from "../../interfaces/IEquipment";
 
 export const defaultEquipment  = {
     id: "",
@@ -6,4 +6,4 @@ export const defaultEquipment  = {
     application: "",
     model: "",
     type: "",
-} as IEquipments
+} as IEquipment

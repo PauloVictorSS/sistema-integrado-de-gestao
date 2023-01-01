@@ -55,17 +55,17 @@ export function BillsTable({toEditBills, toDeleteBills, searchParameters, refres
               </Table.thead>
               <Table.tbody>
                 {
-                  paginatedBills.map(Bills => {
+                  paginatedBills.map(bill => {
                     return (
-                      <Table.tr key={Bills.id}>
-                        <Table.td>{Bills.name}</Table.td>
-                        <Table.td>{Bills.value}</Table.td>
-                        <Table.td>{Bills.dueDate.split('-').reverse().join('/')}</Table.td>
+                      <Table.tr key={bill.id}>
+                        <Table.td>{bill.name}</Table.td>
+                        <Table.td>{bill.value}</Table.td>
+                        <Table.td>{bill.dueDate.split('-').reverse().join('/')}</Table.td>
                         <Table.td className="flex gap-4">
                           <Button 
                             className="flex items-center justify-center px-0" 
                             onClick={() => {
-                              toEditBills(Bills)
+                              toEditBills(bill)
                             }}
                           >
                             <Slot className='w-5 h-5 text-white'><Eye /></Slot>
@@ -73,7 +73,7 @@ export function BillsTable({toEditBills, toDeleteBills, searchParameters, refres
                           <Button
                             className="flex items-center justify-center px-0"
                             onClick={() => {
-                              toDeleteBills(Bills.id, Bills.name, "bills")
+                              toDeleteBills(bill.id, bill.name, "bills")
                             }}
                           >
                             <Slot className='w-5 h-5 text-white'><Trash /></Slot>

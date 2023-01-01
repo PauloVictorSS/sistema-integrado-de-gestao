@@ -1,4 +1,4 @@
-import { IEquipments } from "../interfaces/IEquipments";
+import { IEquipment } from "../interfaces/IEquipment";
 import BoxDiv from "./BoxDiv";
 import { Button } from "./Button";
 import ModelBackground from "./ModelBackground";
@@ -10,7 +10,7 @@ import { Equipments } from "../functions/equipmentsFunctions";
 
 interface EquipmentsCardProps{
     isToAdd: boolean
-    equipament: IEquipments
+    equipament: IEquipment
     changeEquipmentsCard: () => void
     changeViewAlertCard: (children:ReactNode, hasButton:boolean) => void
     refresh: () => void
@@ -32,7 +32,7 @@ export function EquipmentsCard({isToAdd, equipament, changeEquipmentsCard, chang
             model,
             brand,
             type
-        } as IEquipments
+        } as IEquipment
 
         if (isToAdd)
             await Equipments.addNewEquipments(currentEquipament)

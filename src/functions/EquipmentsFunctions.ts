@@ -1,13 +1,13 @@
 import { db } from "../config/firebase"
 import { collection, query, getDocs, doc, setDoc, addDoc } from "firebase/firestore"; 
-import { IEquipments } from "../interfaces/IEquipments";
+import { IEquipment } from "../interfaces/IEquipment";
 import { ISearchParametersEquipments } from "../interfaces/ISearchParameters";
 
 const getAll = async () => {
   const q = query(collection(db, "partsAndEquipaments"))
   const querySnapshot = await getDocs(q)
 
-  let allEquipments: Array<IEquipments> = []
+  let allEquipments: Array<IEquipment> = []
 
   querySnapshot.forEach((Equipments) => {
     let id = Equipments.id
@@ -26,7 +26,7 @@ const getAll = async () => {
   return allEquipments
 }
 
-const filterEquipments = (Equipments:IEquipments, searchParameters:ISearchParametersEquipments) => {
+const filterEquipments = (Equipments:IEquipment, searchParameters:ISearchParametersEquipments) => {
 
   const model = Equipments.model.toLowerCase()
   const application = Equipments.application.toLowerCase()
@@ -41,8 +41,8 @@ const filterEquipments = (Equipments:IEquipments, searchParameters:ISearchParame
   return EquipmentsHasTheAttributes
 }
 
-const applyFilters = (allEquipments:Array<IEquipments>, searchParameters:ISearchParametersEquipments) => {
-  let filteredEquipments: Array<IEquipments> = []
+const applyFilters = (allEquipments:Array<IEquipment>, searchParameters:ISearchParametersEquipments) => {
+  let filteredEquipments: Array<IEquipment> = []
 
   filteredEquipments = allEquipments
 
@@ -55,16 +55,16 @@ const applyFilters = (allEquipments:Array<IEquipments>, searchParameters:ISearch
   return filteredEquipments
 }
 
-const applyPagination = (filteredEquipments:Array<IEquipments>, currentPage:number) => {
+const applyPagination = (filteredEquipments:Array<IEquipment>, currentPage:number) => {
   return filteredEquipments.slice((currentPage - 1) * 8, (currentPage - 1) * 8 + 8)
 }
 
-const addNewEquipments = async (infos:IEquipments) => {
+const addNewEquipments = async (infos:IEquipment) => {
 
   await addDoc(collection(db, "partsAndEquipaments"), infos);
 }
 
-const saveEquipments = async (infos:IEquipments) => {
+const saveEquipments = async (infos:IEquipment) => {
 
   const infosWithoutID = {
     model: infos.model,

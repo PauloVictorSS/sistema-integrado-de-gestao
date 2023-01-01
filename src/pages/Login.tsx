@@ -10,11 +10,11 @@ function Login() {
       <div className="flex flex-col gap-6 items-stretch w-full max-w-sm">
         <label htmlFor="email" className="flex flex-col gap-3">
           <Text className="font-semibold">Endereço de e-mail</Text>
-          <InputText icon={<Envelope/>} type="email" id="email" placeholder="Digite seu e-mail" />
+          <InputText className="bg-gray-800" icon={<Envelope/>} type="email" id="email" placeholder="Digite seu e-mail" />
         </label>
         <label htmlFor="password" className="flex flex-col gap-3">
           <Text className="font-semibold">Senha</Text>
-          <InputText icon={<Lock/>} type="password" id="password" placeholder="********" />
+          <InputText className="bg-gray-800" icon={<Lock/>} type="password" id="password" placeholder="********" />
         </label>
         <a href="/home"><Button>Entrar no sistema</Button></a>
       </div>

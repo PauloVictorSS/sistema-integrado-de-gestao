@@ -1,13 +1,13 @@
 import { db } from "../config/firebase"
 import { collection, query, getDocs, doc, setDoc, addDoc } from "firebase/firestore"; 
-import { IBills } from "../interfaces/IBills";
+import { IBill } from "../interfaces/IBill";
 import { ISearchParametersBills } from "../interfaces/ISearchParameters";
 
 const getAll = async () => {
   const q = query(collection(db, "bills"))
   const querySnapshot = await getDocs(q)
 
-  let allBills: Array<IBills> = []
+  let allBills: Array<IBill> = []
 
   querySnapshot.forEach((Bills) => {
     let id = Bills.id
@@ -24,7 +24,7 @@ const getAll = async () => {
   return allBills
 }
 
-const filterBills = (Bills: IBills, searchParameters: ISearchParametersBills) => {
+const filterBills = (Bills: IBill, searchParameters: ISearchParametersBills) => {
   
   console.log(searchParameters);
 
@@ -34,8 +34,8 @@ const filterBills = (Bills: IBills, searchParameters: ISearchParametersBills) =>
   return billHasNameSearched || billHasDueDateSearched
 }
 
-const applyFilters = (allBills:Array<IBills>, searchParameters:ISearchParametersBills) => {
-  let filteredBills: Array<IBills> = []
+const applyFilters = (allBills:Array<IBill>, searchParameters:ISearchParametersBills) => {
+  let filteredBills: Array<IBill> = []
 
   filteredBills = allBills
 
@@ -48,16 +48,16 @@ const applyFilters = (allBills:Array<IBills>, searchParameters:ISearchParameters
   return filteredBills
 }
 
-const applyPagination = (filteredBills:Array<IBills>, currentPage:number) => {
+const applyPagination = (filteredBills:Array<IBill>, currentPage:number) => {
   return filteredBills.slice((currentPage - 1) * 8, (currentPage - 1) * 8 + 8)
 }
 
-const addNewBills = async (infos:IBills) => {
+const addNewBills = async (infos:IBill) => {
 
   await addDoc(collection(db, "bills"), infos);
 }
 
-const saveBills = async (infos:IBills) => {
+const saveBills = async (infos:IBill) => {
 
   const infosWithoutID = {
     name: infos.name,
