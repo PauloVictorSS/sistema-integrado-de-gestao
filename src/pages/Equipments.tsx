@@ -69,7 +69,7 @@ function Equipments() {
           <Slot className="w-8 h-8 text-white">
             <PlusCircle/>
           </Slot>
-          <p className=" font-sans text-xs text-white">Nova peça/equipamento</p>
+          <p className=" text-xs text-white">Nova peça/equipamento</p>
         </Button>
 
         <div className="flex items-center gap-8 w-full mt-4">

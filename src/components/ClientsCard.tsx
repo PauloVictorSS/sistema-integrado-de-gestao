@@ -5,13 +5,15 @@ import ModelBackground from "./ModelBackground";
 import {Text} from "../components/Text";
 import {InputText} from "../components/InputText";
 import { TextArea } from "./TextArea";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { Client } from "../functions/clientsFunctions";
 import { GeneralFunctions } from "../functions/generalFunctions";
 import logo from "../images/logo.svg"
 import cep from 'cep-promise'
 import { setFoneMask } from "../utils/helpers/masks";
 import { InputSelect } from "./InputSelect";
+import { useReactToPrint } from 'react-to-print';
+import { CardToPrint } from "./CardToPrint";
 
 interface ClientsCardProps{
     isToAdd: boolean
@@ -47,6 +49,12 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
     const [serviceNumber, setServiceNumber] = useState("1000")
 
     const budgetTotal = (clientBudgetLabel !== "" ? parseInt(clientBudgetLabel) : 0) + (clientBudgetComponents !== "" ? parseInt(clientBudgetComponents) : 0)
+
+    const componentRef = useRef(null);
+    const generatePDF = useReactToPrint({
+        content: () => componentRef.current,
+        documentTitle: "Test"
+    });
 
     const saveChanges = async () => {
         const currentClient = {
@@ -99,8 +107,9 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
         getServiceNumber()
     }, [])
 
-    return(
-        <ModelBackground>
+    return (
+        <>
+        <ModelBackground >
             <BoxDiv className="w-[1000px] h-[675px] scrollbar-thin scrollbar-thumb-black scrollbar-track-gray-700">
                 <div className="flex items-center justify-between">
                     <img src={logo} alt="" className="w-52"/>
@@ -352,9 +361,14 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                     Adicionar
                                 </Button>
                                 :
+                                <>
                                 <Button onClick={saveChanges} className="w-64">
                                     Confirmar alterações
                                 </Button>
+                                <Button onClick={generatePDF}>
+                                    Gerar PDF
+                                </Button>
+                                </>
                             }
                             <Button onClick={changeClientsCard} className="w-64">
                                 Fechar
@@ -363,6 +377,12 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                     </div>
                 </div>
             </BoxDiv>
-        </ModelBackground>
+            </ModelBackground>
+            <div style={{ display: "none" }}>
+                <div ref={componentRef}>
+                    <CardToPrint isToAdd={isToAdd} client={client} />
+                </div>
+            </div>
+        </>
     )
 }
