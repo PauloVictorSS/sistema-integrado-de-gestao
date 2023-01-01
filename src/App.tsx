@@ -10,6 +10,7 @@ import Components from "./pages/Components"
 import Clients from "./pages/Clients"
 import Equipments from "./pages/Equipments"
 import GraphsDatas from "./pages/GraphsDatas";
+import Bills from "./pages/Bills";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path="/parts" element={<Equipments/>} />
         <Route path="/clients" element={<Clients/>} />
         <Route path="/data" element={<GraphsDatas/>} />
-        <Route path="/bills" element={<Home/>} />
+        <Route path="/bills" element={<Bills/>} />
         <Route path="/users" element={<Home/>} />
       </Routes>
     </Router>

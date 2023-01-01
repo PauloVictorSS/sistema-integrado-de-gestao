@@ -11,8 +11,14 @@ export interface ISearchParametersComponent{
 export interface ISearchParametersEquipments{
   search: string
 }
+
 export interface ISearchParametersClients{
   search: string
   approval: string
   orderBy: clientSorterOptions
+}
+
+export interface ISearchParametersBills{
+  search: string
+  dueDate: string
 }
