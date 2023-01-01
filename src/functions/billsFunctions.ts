@@ -48,10 +48,6 @@ const applyFilters = (allBills:Array<IBill>, searchParameters:ISearchParametersB
   return filteredBills
 }
 
-const applyPagination = (filteredBills:Array<IBill>, currentPage:number) => {
-  return filteredBills.slice((currentPage - 1) * 8, (currentPage - 1) * 8 + 8)
-}
-
 const addNewBills = async (infos:IBill) => {
 
   await addDoc(collection(db, "bills"), infos);
@@ -68,4 +64,4 @@ const saveBills = async (infos:IBill) => {
   await setDoc(doc(db, "bills", infos.id), infosWithoutID);
 }
 
-export const Bills = { getAll, applyFilters, addNewBills, saveBills, applyPagination }
+export const Bills = { getAll, applyFilters, addNewBills, saveBills }

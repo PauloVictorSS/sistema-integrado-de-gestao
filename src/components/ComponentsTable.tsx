@@ -5,7 +5,7 @@ import { Eye, Trash } from "phosphor-react"
 import { Slot } from "@radix-ui/react-slot";
 import { useEffect, useState } from "react";
 import { Component } from "../functions/componentsFunctions";
-import { getAvaliablePages } from "../utils/helpers/pagination";
+import { applyPagination, getAvaliablePages } from "../utils/helpers/pagination";
 import { PaginationDiv } from "./PaginationDiv";
 import { ISearchParametersComponent } from "../interfaces/ISearchParameters";
 import { Loading } from "./Loading";
@@ -26,7 +26,7 @@ export function ComponentsTable({toEditComponent, toDeleteComponent, searchParam
 
   const filteredComponents = Component.applyFilters(allComponents, searchParameters)
   const allPages = getAvaliablePages(filteredComponents)
-  const paginatedComponents = Component.applyPagination(filteredComponents, currentPage)
+  const paginatedComponents = applyPagination(filteredComponents, currentPage)
 
   const getAllComponents = async () => {
     setIsLoading(true)

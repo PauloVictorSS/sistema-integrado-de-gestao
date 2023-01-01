@@ -79,11 +79,6 @@ const applyFilters = (allComponents:Array<IComponent>, searchParameters:ISearchP
   return filteredComponents
 }
 
-const applyPagination = (filteredComponents: Array<IComponent>, currentPage: number) => {
-  
-  return filteredComponents.slice((currentPage - 1) * 8, (currentPage - 1) * 8 + 8)
-}
-
 const addNewComponent = async (infos:IComponent) => {
 
   await addDoc(collection(db, "components"), infos);
@@ -103,4 +98,4 @@ const saveComponent = async (infos:IComponent) => {
   await setDoc(doc(db, "components", infos.id), infosWithoutID);
 }
 
-export const Component = { getAll, applyFilters, addNewComponent, saveComponent, applyPagination }
+export const Component = { getAll, applyFilters, addNewComponent, saveComponent }

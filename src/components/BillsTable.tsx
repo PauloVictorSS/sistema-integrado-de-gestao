@@ -5,7 +5,7 @@ import { Eye, Trash } from "phosphor-react"
 import { Slot } from "@radix-ui/react-slot";
 import { useEffect, useState } from "react";
 import { Bills } from "../functions/billsFunctions";
-import { getAvaliablePages } from "../utils/helpers/pagination";
+import { applyPagination, getAvaliablePages } from "../utils/helpers/pagination";
 import { PaginationDiv } from "./PaginationDiv";
 import { ISearchParametersBills } from "../interfaces/ISearchParameters";
 import { Loading } from "./Loading";
@@ -26,7 +26,7 @@ export function BillsTable({toEditBills, toDeleteBills, searchParameters, refres
 
   const filteredBills = Bills.applyFilters(allBills, searchParameters)
   const allPages = getAvaliablePages(filteredBills)
-  const paginatedBills = Bills.applyPagination(filteredBills, currentPage)
+  const paginatedBills = applyPagination(filteredBills, currentPage)
 
   const getAllBills = async () => {
     setIsLoading(true)

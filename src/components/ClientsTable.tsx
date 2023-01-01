@@ -5,7 +5,7 @@ import { Eye, Trash } from "phosphor-react"
 import { Slot } from "@radix-ui/react-slot";
 import { useEffect, useState } from "react";
 import { Client } from "../functions/clientsFunctions";
-import { getAvaliablePages } from "../utils/helpers/pagination";
+import { applyPagination, getAvaliablePages } from "../utils/helpers/pagination";
 import { PaginationDiv } from "./PaginationDiv";
 import { ISearchParametersClients } from "../interfaces/ISearchParameters";
 import { Loading } from "./Loading";
@@ -27,7 +27,7 @@ export function ClientsTable({toEditClient, toDeleteClient, searchParameters, re
 
   const filteredClients = Client.applyFilters(allClients, searchParameters)
   const allPages = getAvaliablePages(filteredClients)
-  const paginatedClients = Client.applyPagination(filteredClients, currentPage)
+  const paginatedClients = applyPagination(filteredClients, currentPage)
 
   const getAllClients = async () => {
     setIsLoading(true)

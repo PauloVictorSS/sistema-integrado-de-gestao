@@ -5,7 +5,7 @@ import { Eye, Trash } from "phosphor-react"
 import { Slot } from "@radix-ui/react-slot";
 import { useEffect, useState } from "react";
 import { Equipments } from "../functions/equipmentsFunctions";
-import { getAvaliablePages } from "../utils/helpers/pagination";
+import { applyPagination, getAvaliablePages } from "../utils/helpers/pagination";
 import { PaginationDiv } from "./PaginationDiv";
 import { ISearchParametersEquipments } from "../interfaces/ISearchParameters";
 import { Loading } from "./Loading";
@@ -26,7 +26,7 @@ export function EquipmentsTable({toEditEquipments, toDeleteEquipments, searchPar
 
   const filteredEquipments = Equipments.applyFilters(allEquipments, searchParameters)
   const allPages = getAvaliablePages(filteredEquipments)
-  const paginatedEquipments = Equipments.applyPagination(filteredEquipments, currentPage)
+  const paginatedEquipments = applyPagination(filteredEquipments, currentPage)
 
   const getAllEquipments = async () => {
     setIsLoading(true)

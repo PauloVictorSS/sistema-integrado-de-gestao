@@ -96,11 +96,6 @@ const applyFilters = (allClients:Array<IClient>, searchParameters:ISearchParamet
   return filteredClients
 }
 
-const applyPagination = (filteredClients:Array<IClient>, currentPage:number) => {
-  
-  return filteredClients.slice((currentPage - 1) * 8, (currentPage - 1) * 8 + 8)
-}
-
 const saveClient = async (infos:IClient) => {
 
   const infosWithoutID = {
@@ -128,4 +123,4 @@ const saveClient = async (infos:IClient) => {
   await setDoc(doc(db, "clients", infos.id), infosWithoutID);
 }
 
-export const Client = { getAll, applyFilters, saveClient, applyPagination }
+export const Client = { getAll, applyFilters, saveClient }

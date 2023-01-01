@@ -1,6 +1,7 @@
 import { IBill } from "../../interfaces/IBill"
 import { IComponent } from "../../interfaces/IComponent"
 import { INotification } from "../../interfaces/INotification"
+import { DaysDiffToNotice } from "../constants/generalConstants"
 
 export const makeNotificationsForBills = (allBills:Array<IBill>) => {
 
@@ -15,7 +16,7 @@ export const makeNotificationsForBills = (allBills:Array<IBill>) => {
     let timeDiff = Math.abs(todayDate.getTime() - billDueDate.getTime());
     let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
 
-    if (diffDays <= 5 && (billDueDate > todayDate))
+    if (diffDays <= (DaysDiffToNotice + 2) && (billDueDate > todayDate))
       allBillsNotifications.push({
         id: bill.id,
         text: bill.name + " vence na data " + bill.dueDate.split('-').reverse().join('/')

@@ -55,10 +55,6 @@ const applyFilters = (allEquipments:Array<IEquipment>, searchParameters:ISearchP
   return filteredEquipments
 }
 
-const applyPagination = (filteredEquipments:Array<IEquipment>, currentPage:number) => {
-  return filteredEquipments.slice((currentPage - 1) * 8, (currentPage - 1) * 8 + 8)
-}
-
 const addNewEquipments = async (infos:IEquipment) => {
 
   await addDoc(collection(db, "partsAndEquipaments"), infos);
@@ -77,4 +73,4 @@ const saveEquipments = async (infos:IEquipment) => {
   await setDoc(doc(db, "partsAndEquipaments", infos.id), infosWithoutID);
 }
 
-export const Equipments = { getAll, applyFilters, addNewEquipments, saveEquipments, applyPagination }
+export const Equipments = { getAll, applyFilters, addNewEquipments, saveEquipments }
