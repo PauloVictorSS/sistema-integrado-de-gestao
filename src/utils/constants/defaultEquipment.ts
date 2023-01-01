@@ -1,6 +1,6 @@
 import { IEquipments } from "../../interfaces/IEquipments";
 
-export const defaultEquipament  = {
+export const defaultEquipment  = {
     id: "",
     qtd: 0,
     application: "",

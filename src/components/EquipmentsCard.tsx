@@ -6,7 +6,7 @@ import {Text} from "../components/Text";
 import {InputText} from "../components/InputText";
 import { TextArea } from "./TextArea";
 import { ReactNode, useState } from "react";
-import { Equipments } from "../functions/EquipmentsFunctions";
+import { Equipments } from "../functions/equipmentsFunctions";
 
 interface EquipmentsCardProps{
     isToAdd: boolean

@@ -1,4 +1,4 @@
-import { IComponent } from "../interfaces/IComponents";
+import { IComponent } from "../interfaces/IComponent";
 import { Button } from "./Button";
 import { Table } from "./Table";
 import { Eye, Trash } from "phosphor-react"

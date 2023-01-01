@@ -1,4 +1,4 @@
-import { IBills } from "../interfaces/IBills";
+import { IBill } from "../interfaces/IBill";
 import { Button } from "./Button";
 import { Table } from "./Table";
 import { Eye, Trash } from "phosphor-react"
@@ -11,7 +11,7 @@ import { ISearchParametersBills } from "../interfaces/ISearchParameters";
 import { Loading } from "./Loading";
 
 interface BillsTableProps{
-  toEditBills: (BillsInfos: IBills) => void
+  toEditBills: (BillsInfos: IBill) => void
   toDeleteBills: (id: string, name: string, collection: string) => void
   searchParameters: ISearchParametersBills
   refresh: boolean
@@ -19,7 +19,7 @@ interface BillsTableProps{
 
 export function BillsTable({toEditBills, toDeleteBills, searchParameters, refresh}: BillsTableProps) {
 
-  const [allBills, setAllBills] = useState<IBills[]>([])
+  const [allBills, setAllBills] = useState<IBill[]>([])
   const [isLoading, setIsLoading] = useState(true)
  
   const [currentPage, setCurrentPage] = useState(1)

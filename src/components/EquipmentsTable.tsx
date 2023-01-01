@@ -1,17 +1,17 @@
-import { IEquipments } from "../interfaces/IEquipments";
+import { IEquipment } from "../interfaces/IEquipment";
 import { Button } from "./Button";
 import { Table } from "./Table";
 import { Eye, Trash } from "phosphor-react"
 import { Slot } from "@radix-ui/react-slot";
 import { useEffect, useState } from "react";
-import { Equipments } from "../functions/EquipmentsFunctions";
+import { Equipments } from "../functions/equipmentsFunctions";
 import { getAvaliablePages } from "../utils/helpers/pagination";
 import { PaginationDiv } from "./PaginationDiv";
 import { ISearchParametersEquipments } from "../interfaces/ISearchParameters";
 import { Loading } from "./Loading";
 
 interface EquipmentsTableProps{
-  toEditEquipments: (EquipmentsInfos: IEquipments) => void
+  toEditEquipments: (EquipmentsInfos: IEquipment) => void
   toDeleteEquipments: (id: string, name: string, collection: string) => void
   searchParameters: ISearchParametersEquipments
   refresh: boolean
@@ -19,7 +19,7 @@ interface EquipmentsTableProps{
 
 export function EquipmentsTable({toEditEquipments, toDeleteEquipments, searchParameters, refresh}: EquipmentsTableProps) {
 
-  const [allEquipments, setAllEquipments] = useState<IEquipments[]>([])
+  const [allEquipments, setAllEquipments] = useState<IEquipment[]>([])
   const [isLoading, setIsLoading] = useState(true)
  
   const [currentPage, setCurrentPage] = useState(1)

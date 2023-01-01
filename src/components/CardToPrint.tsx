@@ -1,4 +1,4 @@
-import { IClient } from "../interfaces/IClients";
+import { IClient } from "../interfaces/IClient";
 import BoxDiv from "./BoxDiv";
 import {Text} from "../components/Text";
 import logo from "../images/logo-branco.png"

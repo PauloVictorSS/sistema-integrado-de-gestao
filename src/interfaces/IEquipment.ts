@@ -1,4 +1,4 @@
-export interface IEquipments{
+export interface IEquipment{
     id: string
     application: string
     model: string

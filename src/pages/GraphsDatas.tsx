@@ -6,7 +6,7 @@ import {InputText} from "../components/InputText";
 import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { Client } from "../functions/clientsFunctions";
-import { IClient } from "../interfaces/IClients";
+import { IClient } from "../interfaces/IClient";
 import { GraphsData, IRepairsInPeriod } from "../functions/graphicsDataFunctions";
 import { Table } from "../components/Table";
 import { Loading } from "../components/Loading";

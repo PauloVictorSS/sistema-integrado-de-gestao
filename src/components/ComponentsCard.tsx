@@ -1,4 +1,4 @@
-import { IComponent } from "../interfaces/IComponents";
+import { IComponent } from "../interfaces/IComponent";
 import BoxDiv from "./BoxDiv";
 import { Button } from "./Button";
 import ModelBackground from "./ModelBackground";

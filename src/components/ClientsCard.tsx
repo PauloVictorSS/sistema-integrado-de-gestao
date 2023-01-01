@@ -1,4 +1,4 @@
-import { IClient } from "../interfaces/IClients";
+import { IClient } from "../interfaces/IClient";
 import BoxDiv from "./BoxDiv";
 import { Button } from "./Button";
 import ModelBackground from "./ModelBackground";

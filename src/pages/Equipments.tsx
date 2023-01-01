@@ -8,8 +8,8 @@ import { InputText } from "../components/InputText";
 import { EquipmentsTable } from "../components/EquipmentsTable";
 import { ReactNode, useState } from "react";
 import { EquipmentsCard } from "../components/EquipmentsCard";
-import { IEquipments } from "../interfaces/IEquipments";
-import { defaultEquipament } from "../utils/constants/DefaultEquipament";
+import { IEquipment } from "../interfaces/IEquipment";
+import { defaultEquipment } from "../utils/constants/defaultEquipment";
 import { DeleteCard } from "../components/DeleteCard";
 import { AlertCard } from "../components/AlertCard";
 
@@ -31,15 +31,15 @@ function Equipments() {
 
   const [refresh, setRefresh] = useState(true)
 
-  const [EquipmentInfos, setEquipmentsInfos] = useState<IEquipments>(defaultEquipament)
+  const [EquipmentInfos, setEquipmentsInfos] = useState<IEquipment>(defaultEquipment)
 
   const toAddEquipmentsCard = () => {
     setIsAddEquipment(true)
-    setEquipmentsInfos(defaultEquipament)
+    setEquipmentsInfos(defaultEquipment)
     setSeeEquipmentsCard(!seeEquipmentsCard)
   }
 
-  const toEditEquipments = (component:IEquipments) => {
+  const toEditEquipments = (component:IEquipment) => {
     setIsAddEquipment(false)
     setEquipmentsInfos(component)
     setSeeEquipmentsCard(!seeEquipmentsCard)

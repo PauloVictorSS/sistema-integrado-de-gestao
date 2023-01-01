@@ -1,4 +1,4 @@
-import { IClient } from "../interfaces/IClients";
+import { IClient } from "../interfaces/IClient";
 import { Button } from "./Button";
 import { Table } from "./Table";
 import { Eye, Trash } from "phosphor-react"

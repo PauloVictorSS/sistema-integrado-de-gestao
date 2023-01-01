@@ -1,4 +1,4 @@
-export interface IBills{
+export interface IBill{
     id: string
     name: string
     value: number

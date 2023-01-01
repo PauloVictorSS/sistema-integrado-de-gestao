@@ -1,7 +1,6 @@
 export type componentSorterOptions = "name" | "lastUpdate";
 export type clientSorterOptions = "name" | "id";
 
-
 export interface ISearchParametersComponent{
   search: string
   local: string

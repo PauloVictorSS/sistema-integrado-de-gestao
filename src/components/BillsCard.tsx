@@ -1,4 +1,4 @@
-import { IBills } from "../interfaces/IBills";
+import { IBill } from "../interfaces/IBill";
 import BoxDiv from "./BoxDiv";
 import { Button } from "./Button";
 import ModelBackground from "./ModelBackground";
@@ -9,7 +9,7 @@ import { Bills } from "../functions/billsFunctions";
 
 interface BillsCardProps{
     isToAdd: boolean
-    bill: IBills
+    bill: IBill
     changeBillsCard: () => void
     changeViewAlertCard: (children:ReactNode, hasButton:boolean) => void
     refresh: () => void
@@ -27,7 +27,7 @@ export function BillsCard({isToAdd, bill, changeBillsCard, changeViewAlertCard, 
             name,
             value,
             dueDate,
-        } as IBills
+        } as IBill
 
         if (isToAdd)
             await Bills.addNewBills(currentbill)

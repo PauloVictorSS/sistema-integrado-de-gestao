@@ -8,8 +8,8 @@ import { InputText } from "../components/InputText";
 import { BillsTable } from "../components/BillsTable";
 import { ReactNode, useState } from "react";
 import { BillsCard } from "../components/BillsCard";
-import { IBills } from "../interfaces/IBills";
-import { defaultBill } from "../utils/constants/DefaultBill";
+import { IBill } from "../interfaces/IBill";
+import { defaultBill } from "../utils/constants/defaultBill";
 import { DeleteCard } from "../components/DeleteCard";
 import { AlertCard } from "../components/AlertCard";
 
@@ -32,7 +32,7 @@ function Bills() {
 
   const [refresh, setRefresh] = useState(true)
 
-  const [BillInfos, setBillsInfos] = useState<IBills>(defaultBill)
+  const [BillInfos, setBillsInfos] = useState<IBill>(defaultBill)
 
   const toAddBillsCard = () => {
     setIsAddBill(true)
@@ -40,7 +40,7 @@ function Bills() {
     setSeeBillsCard(!seeBillsCard)
   }
 
-  const toEditBills = (component:IBills) => {
+  const toEditBills = (component:IBill) => {
     setIsAddBill(false)
     setBillsInfos(component)
     setSeeBillsCard(!seeBillsCard)
