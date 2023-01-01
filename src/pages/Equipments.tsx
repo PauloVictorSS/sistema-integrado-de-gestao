@@ -65,17 +65,19 @@ function Equipments() {
       <div className="w-full px-10">
         <h2 className="font-bold text-2xl max-w-sm mx-auto text-center">Gerenciamento de Peças e Equipamentos</h2>
 
-        <Button className="flex items-center gap-4 w-56 mt-4" onClick={toAddEquipmentsCard}>
-          <Slot className="w-8 h-8 text-white">
-            <PlusCircle/>
-          </Slot>
-          <p className=" text-xs text-white">Nova peça/equipamento</p>
-        </Button>
+        <div className="flex items-center justify-end">
+          <Button className="flex items-center gap-4 w-64 mt-4" onClick={toAddEquipmentsCard}>
+            <Slot className="w-8 h-8 text-white">
+              <PlusCircle/>
+            </Slot>
+            <p className=" text-xs text-white">Nova peça/equipamento</p>
+          </Button>
+        </div>
 
         <div className="flex items-center gap-8 w-full mt-4">
-          <label htmlFor="search" className="flex flex-col gap-3 w-full">
+          <label htmlFor="search" className="flex flex-col gap-3 w-[450px]">
             <Text className="font-semibold">Pesquisa</Text>
-            <InputText className="w-96" icon={<PuzzlePiece />} type="text" id="search" placeholder="Digite alguma característica do equipamento ou peça" value={searchEquipment} onChange={(e) => {setSearchEquipments(e.target.value)}}/>
+            <InputText className="bg-gray-800 w-[450px] max-w-none" icon={<PuzzlePiece />} type="text" id="search" placeholder="Digite alguma característica do equipamento ou peça" value={searchEquipment} onChange={(e) => {setSearchEquipments(e.target.value)}}/>
           </label>
         </div>
 

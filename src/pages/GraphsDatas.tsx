@@ -81,7 +81,7 @@ function GraphsDatas() {
                     onChange={(e) => setLastDate(e.target.value)}
                 />
             </label>
-            <Button onClick={recoverProfitInPeriod} className="w-20">
+            <Button onClick={recoverProfitInPeriod} className="w-24">
               Pesquisar
             </Button>
           </div>

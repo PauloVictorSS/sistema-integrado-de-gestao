@@ -69,25 +69,27 @@ function Components() {
       <div className="w-full px-10">
         <h2 className="font-bold text-2xl max-w-sm mx-auto text-center">Gerenciamento de Componentes</h2>
 
-        <Button className="flex items-center gap-4 w-48 mt-4" onClick={toAddComponentCard}>
-          <Slot className="w-8 h-8 text-white">
-            <PlusCircle/>
-          </Slot>
-          <p className=" text-xs text-white">Novo componente</p>
-        </Button>
+        <div className="flex items-center justify-end">
+          <Button className="flex items-center gap-4 w-52 mt-4" onClick={toAddComponentCard}>
+            <Slot className="w-8 h-8 text-white">
+              <PlusCircle/>
+            </Slot>
+            <p className=" text-xs text-white">Novo componente</p>
+          </Button>
+        </div>
 
         <div className="flex items-center gap-8 w-full mt-4">
-          <label htmlFor="search" className="flex flex-col gap-3">
+          <label htmlFor="search" className="flex flex-col gap-3 w-96">
             <Text className="font-semibold">Pesquisa</Text>
-            <InputText className="w-96" icon={<PuzzlePiece />} type="text" id="search" placeholder="Digite um nome ou descrição de algum componente" value={searchComponent} onChange={(e) => {setSearchComponent(e.target.value)}}/>
+            <InputText className="bg-gray-800 w-96" icon={<PuzzlePiece />} type="text" id="search" placeholder="Digite um nome ou descrição de algum componente" value={searchComponent} onChange={(e) => {setSearchComponent(e.target.value)}}/>
           </label>
           <label htmlFor="local" className="flex flex-col gap-3">
             <Text className="font-semibold">Gaveta</Text>
-            <InputText className="w-64" icon={<ShoppingBag/>} type="text" id="local" placeholder="Digite G + “número da gaveta”" value={localComponent} onChange={(e) => {setLocalComponent(e.target.value)}}/>
+            <InputText className="bg-gray-800 w-64" icon={<ShoppingBag/>} type="text" id="local" placeholder="Digite G + “número da gaveta”" value={localComponent} onChange={(e) => {setLocalComponent(e.target.value)}}/>
           </label>
           <label htmlFor="order" className="flex flex-col gap-3">
             <Text className="font-semibold">Ordenar por</Text>
-            <InputSelect id="order" value={orderByComponent} onChange={(e) => {setOrderByComponent(e.target.value as componentSorterOptions)}}>
+            <InputSelect className="bg-gray-800" id="order" value={orderByComponent} onChange={(e) => {setOrderByComponent(e.target.value as componentSorterOptions)}}>
               <option value="name">Nome</option>
               <option value="lastUpdate">Data de Última alteração</option>
             </InputSelect>

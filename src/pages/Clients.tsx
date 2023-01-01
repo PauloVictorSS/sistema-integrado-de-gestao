@@ -69,21 +69,23 @@ function Clients() {
       <div className="w-full px-10">
         <h2 className="font-bold text-2xl max-w-sm mx-auto text-center">Gerenciamento de Clientes</h2>
 
-        <Button className="flex items-center gap-4 w-48 mt-4" onClick={toAddClientCard}>
-          <Slot className="w-8 h-8 text-white">
-            <PlusCircle/>
-          </Slot>
-          <p className=" text-xs text-white">Novo cliente</p>
-        </Button>
+        <div className="flex items-center justify-end">
+          <Button className="flex items-center gap-4 w-40 mt-4" onClick={toAddClientCard}>
+            <Slot className="w-8 h-8 text-white">
+              <PlusCircle/>
+            </Slot>
+            <p className=" text-xs text-white">Novo cliente</p>
+          </Button>
+        </div>
 
         <div className="flex items-center gap-8 w-full mt-4">
-          <label htmlFor="search" className="flex flex-col gap-3 w-[500px]">
+          <label htmlFor="search" className="flex flex-col gap-3 w-[530px]">
             <Text className="font-semibold">Pesquisa</Text>
-            <InputText className="w-[500px] max-w-none" icon={<PuzzlePiece />} type="text" id="search" placeholder="Digite o nome do cliente ou alguma característica de seu equipamento" value={searchClient} onChange={(e) => {setSearchClient(e.target.value)}}/>
+            <InputText className="bg-gray-800 w-[530px] max-w-none" icon={<PuzzlePiece />} type="text" id="search" placeholder="Digite o nome do cliente ou alguma característica de seu equipamento" value={searchClient} onChange={(e) => {setSearchClient(e.target.value)}}/>
           </label>
           <label htmlFor="approval" className="flex flex-col gap-3">
             <Text className="font-semibold">Orçamento aprovado</Text>
-            <InputSelect id="approval" value={approvedBudgetClient} onChange={(e) => {setApprovedBudgetClient(e.target.value)}}>
+            <InputSelect className="bg-gray-800" id="approval" value={approvedBudgetClient} onChange={(e) => {setApprovedBudgetClient(e.target.value)}}>
               <option value=""></option>
               <option value="Pendente">Pendente</option>
               <option value="Sim">Sim</option>
@@ -92,7 +94,7 @@ function Clients() {
           </label>
           <label htmlFor="order" className="flex flex-col gap-3">
             <Text className="font-semibold">Ordenar por</Text>
-            <InputSelect id="order" value={orderByClient} onChange={(e) => {setOrderByClient(e.target.value as clientSorterOptions)}}>
+            <InputSelect className="bg-gray-800" id="order" value={orderByClient} onChange={(e) => {setOrderByClient(e.target.value as clientSorterOptions)}}>
               <option value="name">Nome</option>
               <option value="id">Identificador</option>
             </InputSelect>

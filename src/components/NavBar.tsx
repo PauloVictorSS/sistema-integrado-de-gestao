@@ -38,7 +38,7 @@ function NavBar({ active }: NavBarProps) {
         <NavBarItem name="Peças e equipamentos" link="/parts" icon={<Gear />} active={active === "Peças"}/>
         <NavBarItem name="Clientes" link="/clients" icon={<FolderUser />} active={active === "Clientes"}/>
         <NavBarItem name="Gráficos e dados" link="/data" icon={<ChartLineUp />} active={active === "Dados"}/>
-        <NavBarItem name="Contas a pagar/receber" link="/bills" icon={<CurrencyCircleDollar />} active={active === "Contas"}/>
+        <NavBarItem name="Contas a pagar" link="/bills" icon={<CurrencyCircleDollar />} active={active === "Contas"}/>
         <NavBarItem name="Usuários" link="/users" icon={<UserGear />} active={active === "Usuários"}/>
         <NavBarItem name="Sair" link="/" icon={<SignOut />} active={false}/>
       </div>

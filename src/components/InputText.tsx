@@ -8,7 +8,7 @@ interface InputTextProps extends InputHTMLAttributes<HTMLInputElement>{
 
 export function InputText({ icon, className, ...props }: InputTextProps) {
   return (
-    <div className={'flex items-center gap-3 h-10 px-2 rounded bg-gray-800 w-full max-w-sm outline-none focus-within:ring-2 ring-cyan-300 ' + className}>
+    <div className={className + ' flex items-center gap-3 h-10 px-2 rounded w-full max-w-sm outline-none focus-within:ring-2 ring-cyan-300'}>
       <Slot className='w-6 h-6 text-gray-400'>
         {icon}
       </Slot>
