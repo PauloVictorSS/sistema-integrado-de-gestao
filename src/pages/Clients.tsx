@@ -14,6 +14,7 @@ import { defaultClient } from "../utils/constants/defaultClient";
 import { DeleteCard } from "../components/DeleteCard";
 import { AlertCard } from "../components/AlertCard";
 import { clientSorterOptions } from "../interfaces/ISearchParameters";
+import logo from "../images/logo.png"
 
 function Clients() {
 
@@ -67,7 +68,10 @@ function Clients() {
       <NavBar active="Clientes" />
 
       <div className="w-full px-10">
-        <h2 className="font-bold text-2xl max-w-sm mx-auto text-center">Gerenciamento de Clientes</h2>
+        <div className="flex items-center justify-center mt-4">
+          <img src={logo} alt="" className="w-24"/>
+          <h2 className="font-bold text-2xl max-w-sm text-center">Gerenciamento de clientes</h2>
+        </div>
 
         <div className="flex items-center justify-end">
           <Button className="flex items-center gap-4 w-40 mt-4" onClick={toAddClientCard}>

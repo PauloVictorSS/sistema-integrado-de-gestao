@@ -2,6 +2,7 @@ import { InputText } from "../components/InputText";
 import { Text } from "../components/Text"
 import {Envelope, Lock} from "phosphor-react"
 import { Button } from "../components/Button";
+import logo from "../images/logo-branco.png"
 
 function Login() {
 
@@ -18,8 +19,11 @@ function Login() {
         </label>
         <a href="/home"><Button>Entrar no sistema</Button></a>
       </div>
-      <div className="h-72 border-r-2"></div>
-      <h2 className="font-bold text-3xl max-w-sm text-center">Sistema Integrado de Gestão</h2>
+      <div className="h-80 border-r-2"></div>
+      <div className="flex flex-col items-center justify-center">
+        <img src={logo} alt="" className="w-[350px]"/>
+        <h2 className="font-bold text-3xl max-w-sm text-center">Sistema Integrado de Gestão</h2>
+      </div>
     </div>
   );
 }

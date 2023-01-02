@@ -1,2 +1,2 @@
-export const TotalElementsPerPage = 8
+export const TotalElementsPerPage = 7
 export const DaysDiffToNotice = 3

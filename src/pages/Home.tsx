@@ -11,6 +11,7 @@ import { INotification } from "../interfaces/INotification";
 import { makeNotificationsForBills, makeNotificationsForComponents } from "../utils/helpers/notification";
 import { Component } from "../functions/componentsFunctions";
 import { IComponent } from "../interfaces/IComponent";
+import logo from "../images/logo.png"
 
 function Home() {
 
@@ -37,12 +38,14 @@ function Home() {
     getAllInfos()
   }, [])
 
-
   return (
     <ContentDiv>
       <NavBar active="Home" />
       <div className="w-full">
-        <h2 className="font-bold text-2xl max-w-sm mx-auto text-center">Bem vindo ao Sistema Integrado de Gestão</h2>
+        <div className="flex items-center justify-center mt-4">
+          <img src={logo} alt="" className="w-24"/>
+          <h2 className="font-bold text-2xl max-w-sm text-center">Bem vindo ao sistema de gestão integrado</h2>
+        </div>
         <div className="flex flex-wrap mx-auto my-10 w-[900px] gap-[100px]">
           <BoxDiv className="w-[400px] h-[285px] flex flex-col gap-4 scrollbar-thin scrollbar-thumb-black scrollbar-track-gray-700">
             {isLoading ? <Loading /> :

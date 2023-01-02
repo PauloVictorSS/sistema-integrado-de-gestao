@@ -10,6 +10,7 @@ import { IClient } from "../interfaces/IClient";
 import { GraphsData, IRepairsInPeriod } from "../functions/graphicsDataFunctions";
 import { Table } from "../components/Table";
 import { Loading } from "../components/Loading";
+import logo from "../images/logo.png"
 
 function GraphsDatas() {
 
@@ -57,7 +58,10 @@ function GraphsDatas() {
     <ContentDiv>
       <NavBar active="Dados" />
       <div className="w-full">
-        <h2 className="font-bold text-2xl max-w-sm mx-auto text-center">Consulta de dados</h2>
+        <div className="flex items-center justify-center mt-4 gap-4">
+          <img src={logo} alt="" className="w-24"/>
+          <h2 className="font-bold text-2xl max-w-sm text-center">Consulta de dados</h2>
+        </div>
         <BoxDiv className="w-[600px] mx-auto mt-10">
           <h2 className="font-bold text-md max-w-sm mx-auto text-center">Lucro em um determinado período</h2>
           <div className="flex items-end justify-between mt-4">

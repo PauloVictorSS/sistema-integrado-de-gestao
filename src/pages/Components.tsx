@@ -14,6 +14,7 @@ import { defaultComponent } from "../utils/constants/defaultComponent";
 import { DeleteCard } from "../components/DeleteCard";
 import { AlertCard } from "../components/AlertCard";
 import { componentSorterOptions } from "../interfaces/ISearchParameters";
+import logo from "../images/logo.png"
 
 function Components() {
 
@@ -67,7 +68,10 @@ function Components() {
       <NavBar active="Componentes" />
 
       <div className="w-full px-10">
-        <h2 className="font-bold text-2xl max-w-sm mx-auto text-center">Gerenciamento de Componentes</h2>
+        <div className="flex items-center justify-center mt-4">
+          <img src={logo} alt="" className="w-24"/>
+          <h2 className="font-bold text-2xl max-w-sm text-center">Gerenciamento de componentes</h2>
+        </div>
 
         <div className="flex items-center justify-end">
           <Button className="flex items-center gap-4 w-52 mt-4" onClick={toAddComponentCard}>

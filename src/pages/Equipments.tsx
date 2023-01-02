@@ -12,6 +12,7 @@ import { IEquipment } from "../interfaces/IEquipment";
 import { defaultEquipment } from "../utils/constants/defaultEquipment";
 import { DeleteCard } from "../components/DeleteCard";
 import { AlertCard } from "../components/AlertCard";
+import logo from "../images/logo.png"
 
 function Equipments() {
 
@@ -63,7 +64,10 @@ function Equipments() {
       <NavBar active="Peças" />
 
       <div className="w-full px-10">
-        <h2 className="font-bold text-2xl max-w-sm mx-auto text-center">Gerenciamento de Peças e Equipamentos</h2>
+        <div className="flex items-center justify-center mt-4">
+          <img src={logo} alt="" className="w-24"/>
+          <h2 className="font-bold text-2xl max-w-sm text-center">Gerenciamento de peças e equipamentos</h2>
+        </div>
 
         <div className="flex items-center justify-end">
           <Button className="flex items-center gap-4 w-64 mt-4" onClick={toAddEquipmentsCard}>

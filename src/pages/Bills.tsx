@@ -1,4 +1,4 @@
-import {Text} from "../components/Text"
+import { Text } from "../components/Text"
 import { Button } from "../components/Button";
 import ContentDiv from "../components/ContentDiv";
 import NavBar from "../components/NavBar";
@@ -12,6 +12,7 @@ import { IBill } from "../interfaces/IBill";
 import { defaultBill } from "../utils/constants/defaultBill";
 import { DeleteCard } from "../components/DeleteCard";
 import { AlertCard } from "../components/AlertCard";
+import logo from "../images/logo.png"
 
 function Bills() {
 
@@ -64,7 +65,10 @@ function Bills() {
       <NavBar active="Contas" />
 
       <div className="w-full px-10">
-        <h2 className="font-bold text-2xl max-w-sm mx-auto text-center">Gerenciamento de Contas a pagar</h2>
+        <div className="flex items-center justify-center mt-4">
+          <img src={logo} alt="" className="w-24"/>
+          <h2 className="font-bold text-2xl max-w-sm text-center">Gerenciamento de contas a pagar</h2>
+        </div>
 
         <div className="flex items-center justify-end">
           <Button className="flex items-center gap-4 w-40 mt-4" onClick={toAddBillsCard}>
