@@ -9,8 +9,8 @@
 /coverage
 
 # production
-/build
-
+build
+dist
 
 src/config
 .env

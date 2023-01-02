@@ -1,9 +1,13 @@
 {
   "name": "sistema-integrado-de-gestao",
   "version": "0.1.0",
-  "main": "public/main.js",
+  "main": "public/electron.js",
   "homepage": "./",
-  "private": true,
+  "author": {
+    "name": "Paulo Victor de Souza Santos",
+    "email": "paulovictorsantos0@gmail.com"
+  },
+  "description": "Sisteta para gerenciamento de uma loja de consertos de equipamentos eletrônicos",
   "dependencies": {
     "@electron/remote": "^2.0.8",
     "@radix-ui/react-checkbox": "^1.0.0",
@@ -19,8 +23,6 @@
     "clsx": "^1.1.0",
     "concurrently": "^7.4.0",
     "cross-env": "^7.0.3",
-    "electron": "^21.2.0",
-    "electron-builder": "^23.6.0",
     "electron-is-dev": "^2.0.0",
     "firebase": "^9.13.0",
     "phosphor-react": "^1.4.1",
@@ -38,22 +40,20 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "react-build": "react-scripts build",
     "electron:serve": "concurrently -k \"cross-env BROWSER=none npm start\" \"npm run electron:start\"",
-    "electron:build": "npm run build && electron-builder -c.extraMetadata.main=build/main.js",
     "electron:start": "wait-on tcp:3000 && electron .",
-    "electron:exe": "npm run electron:build && npx eletron-packager ./ sistema-integrado --platform=win32 --arch=x64"
+    "electron:package": "npm run build && electron-builder -w -c.extraMetadata.main=build/electron.js"
   },
   "build": {
-    "extends": null,
-    "appId": "com.example.eletron-cra",
+    "appId": "com.example.electron",
+    "productName": "Sistema ES",
     "files": [
-      "dist/**/*",
       "build/**/*",
-      "node_modules/**/*",
-      "package.json"
+      "node_modules/**/*"
     ],
     "directories": {
-      "buildResources": "assets"
+      "buildResources": "public"
     }
   },
   "eslintConfig": {
@@ -75,6 +75,8 @@
     ]
   },
   "devDependencies": {
+    "electron": "^21.2.0",
+    "electron-builder": "^23.6.0",
     "autoprefixer": "^10.4.12",
     "electron-packager": "^17.1.1",
     "postcss": "^8.4.18",

@@ -9,12 +9,16 @@ function createWindow(){
         width: 1024,
         height: 800,
         webPreferences: {
+            contextIsolation: false,
             enableRemoteModule: true
         }
     })
 
-    win.loadURL('http://localhost:3000');
-    
+    win.loadURL(
+        isDev
+            ? 'http://localhost:3000'
+            : `file://${path.join(__dirname, '../build/index.html')}`
+    );
 }
 
 app.on('ready', createWindow)
