@@ -112,7 +112,7 @@ function GraphsDatas() {
               </Table.content>
             </>
           }
-          <div className="mt-7 text-center">
+          <div className="mt-7">
             <Text>Custo em mão-de-obra: R$ {totalBudgetLabel}</Text>
             <Text>Custo em componentes: R$ {totalBudgetComponent}</Text>
             <Text>Total de orçamento aprovado nesse período: R$ {totalBudgetLabel + totalBudgetComponent}</Text>

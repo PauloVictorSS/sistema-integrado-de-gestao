@@ -1,5 +1,6 @@
 const { app, BrowserWindow} = require('electron')
-
+const isDev = require('electron-is-dev')
+const path = require('path')
 require('@electron/remote/main').initialize()
 
 function createWindow(){
@@ -12,7 +13,8 @@ function createWindow(){
         }
     })
 
-    win.loadURL('http://localhost:3000')
+    win.loadURL('http://localhost:3000');
+    
 }
 
 app.on('ready', createWindow)

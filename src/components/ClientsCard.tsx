@@ -45,7 +45,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
     const [clientPaid, setClientPaid] = useState(client.paid)
     const [clientTechnicalEvaluationt, setClientTechnicalEvaluationt] = useState(client.technicalEvaluationt)
 
-    const [clientCEP, setClientCEP] = useState(99999999)
+    const [clientCEP, setClientCEP] = useState(0)
     const [serviceNumber, setServiceNumber] = useState("1000")
 
     const budgetTotal = (clientBudgetLabel !== "" ? parseInt(clientBudgetLabel) : 0) + (clientBudgetComponents !== "" ? parseInt(clientBudgetComponents) : 0)
@@ -145,7 +145,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                 className="bg-gray-900"
                                 type="text"
                                 id="name"
-                                placeholder="nome do cliente"
+                                placeholder="Nome do cliente"
                                 value={clientName}
                                 onChange={(e) => setClientName(e.target.value)}
                             />
@@ -156,7 +156,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                 className="bg-gray-900"
                                 type="text"
                                 id="tel"
-                                placeholder="telefone"
+                                placeholder="Telefone"
                                 value={clientFone}
                                 maxLength={15}
                                 onChange={(e) => setClientFone(setFoneMask(e.target.value))}
@@ -186,7 +186,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                 className="bg-gray-900"
                                 type="text"
                                 id="city"
-                                placeholder="cidade do cliente"
+                                placeholder="Cidade do cliente"
                                 value={clientCity}
                                 onChange={(e) => setClientCity(e.target.value)}
                             />
@@ -197,7 +197,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                 className="bg-gray-900"
                                 type="text"
                                 id="district"
-                                placeholder="bairro do cliente"
+                                placeholder="Bairro do cliente"
                                 value={clientDistrict}
                                 onChange={(e) => setClientDistrict(e.target.value)}
                             />
@@ -208,7 +208,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                 className="bg-gray-900"
                                 type="text"
                                 id="local"
-                                placeholder="endereço do cliente"
+                                placeholder="Endereço do cliente"
                                 value={clientLocal}
                                 onChange={(e) => setClientLocal(e.target.value)}
                             />
@@ -221,7 +221,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                 className="bg-gray-900"
                                 type="text"
                                 id="equipment"
-                                placeholder="equipamento do cliente"
+                                placeholder="Equipamento do cliente"
                                 value={clientEquipment}
                                 onChange={(e) => setClientEquipment(e.target.value)}
                             />
@@ -232,7 +232,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                 className="bg-gray-900 max-w-none"
                                 type="text"
                                 id="defect"
-                                placeholder="defeito do equipamento"
+                                placeholder="Defeito do equipamento"
                                 value={clientDefect}
                                 onChange={(e) => setClientDefect(e.target.value)}
                             />
@@ -245,7 +245,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                 className="bg-gray-900"
                                 type="text"
                                 id="brand"
-                                placeholder="marca do cliente"
+                                placeholder="Marca do equipamento"
                                 value={clientBrand}
                                 onChange={(e) => setClientBrand(e.target.value)}
                             />
@@ -256,7 +256,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                 className="bg-gray-900"
                                 type="text"
                                 id="model"
-                                placeholder="modelo do cliente"
+                                placeholder="Modelo do equipamento"
                                 value={clientModel}
                                 onChange={(e) => setClientModel(e.target.value)}
                             />
@@ -267,7 +267,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                 className="bg-gray-900"
                                 type="text"
                                 id="accessories"
-                                placeholder="acessórios do equipamento"
+                                placeholder="Acessórios do equipamento"
                                 value={clientAccessories}
                                 onChange={(e) => setClientAccessories(e.target.value)}
                             />
@@ -304,7 +304,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                 className="bg-gray-900"
                                 type="number"
                                 id="budgetLabel"
-                                placeholder="custo da mão de obra"
+                                placeholder="Custo da mão de obra"
                                 value={clientBudgetLabel}
                                 onChange={(e) => setClientBudgetLabel(e.target.value.toString())}
                             />
@@ -315,7 +315,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                 className="bg-gray-900"
                                 type="number"
                                 id="budgetComponents"
-                                placeholder="custo dos componentes"
+                                placeholder="Custo dos componentes"
                                 value={clientBudgetComponents}
                                 onChange={(e) => setClientBudgetComponents(e.target.value.toString())}
                             />
@@ -326,7 +326,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                                 className="bg-gray-900"
                                 type="number"
                                 id="budgetTotal"
-                                placeholder="custo total"
+                                placeholder="Custo total"
                                 value={budgetTotal}
                                 disabled
                             />
@@ -338,7 +338,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             <TextArea
                                 className="h-40 bg-gray-900 w-64"
                                 id="technicalEvaluationt"
-                                placeholder="avaliação técnica"
+                                placeholder="Avaliação técnica"
                                 value={clientTechnicalEvaluationt}
                                 onChange={(e) => setClientTechnicalEvaluationt(e.target.value)}
                             >
@@ -349,7 +349,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             <TextArea
                                 className="h-40 bg-gray-900 w-64"
                                 id="changedEquipaments"
-                                placeholder="peças/equipamentos trocados"
+                                placeholder="Peças/equipamentos trocados"
                                 value={clientChangedEquipaments}
                                 onChange={(e) => setClientChangedEquipaments(e.target.value)}
                             >
