@@ -67,10 +67,8 @@ const orderComponents = (filteredComponents:IComponent[], orderBy:componentSorte
 const applyFilters = (allComponents:Array<IComponent>, searchParameters:ISearchParametersComponent) => {
   let filteredComponents: Array<IComponent> = []
 
-  filteredComponents = allComponents
-
   if (searchParameters.search !== "" || searchParameters.local !== "") {
-    filteredComponents = filteredComponents.filter(component => {
+    filteredComponents = allComponents.filter(component => {
       return filterComponents(component, searchParameters)
     })
   }

@@ -85,7 +85,7 @@ function Bills() {
             <InputText className="bg-gray-800 w-96" icon={<PuzzlePiece />} type="text" id="search" placeholder="Digite o nome da conta" value={searchBill} onChange={(e) => {setSearchBills(e.target.value)}}/>
           </label>
           <label htmlFor="dueDate" className="flex flex-col gap-3 w-64">
-                <Text className="font-semibold">Data de vencimento</Text>
+                <Text className="font-semibold">Vencimento a partir da data</Text>
                 <InputText
                     className="bg-gray-800"
                     type="date"

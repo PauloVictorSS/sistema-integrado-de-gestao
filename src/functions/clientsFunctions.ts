@@ -83,10 +83,8 @@ const orderClients = (filteredClients:IClient[], orderBy:clientSorterOptions) =>
 const applyFilters = (allClients:Array<IClient>, searchParameters:ISearchParametersClients) => {
   let filteredClients: Array<IClient> = []
 
-  filteredClients = allClients
-
   if (searchParameters.search !== "" || searchParameters.approval !== "") {
-    filteredClients = filteredClients.filter(client => {
+    filteredClients = allClients.filter(client => {
       return filterClients(client, searchParameters)
     })
   }

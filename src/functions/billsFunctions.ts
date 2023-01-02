@@ -25,11 +25,12 @@ const getAll = async () => {
 }
 
 const filterBills = (Bills: IBill, searchParameters: ISearchParametersBills) => {
-  
-  console.log(searchParameters);
+
+  let dueDate = new Date(searchParameters.dueDate)
+  let billDueDate = new Date(Bills.dueDate)
 
   const billHasNameSearched = (searchParameters.search !== "" && Bills.name.toLowerCase().includes(searchParameters.search))
-  const billHasDueDateSearched = (searchParameters.dueDate !== "" && Bills.dueDate >= searchParameters.dueDate)
+  const billHasDueDateSearched = (searchParameters.dueDate !== "" && billDueDate.getTime() >= dueDate.getTime())
 
   return billHasNameSearched || billHasDueDateSearched
 }
@@ -37,10 +38,8 @@ const filterBills = (Bills: IBill, searchParameters: ISearchParametersBills) => 
 const applyFilters = (allBills:Array<IBill>, searchParameters:ISearchParametersBills) => {
   let filteredBills: Array<IBill> = []
 
-  filteredBills = allBills
-
   if (searchParameters.search !== "" || searchParameters.dueDate !== "") {
-    filteredBills = filteredBills.filter(Bills => {
+    filteredBills = allBills.filter(Bills => {
       return filterBills(Bills, searchParameters)
     })
   }

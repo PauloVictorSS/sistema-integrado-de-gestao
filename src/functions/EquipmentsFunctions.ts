@@ -44,10 +44,8 @@ const filterEquipments = (Equipments:IEquipment, searchParameters:ISearchParamet
 const applyFilters = (allEquipments:Array<IEquipment>, searchParameters:ISearchParametersEquipments) => {
   let filteredEquipments: Array<IEquipment> = []
 
-  filteredEquipments = allEquipments
-
   if (searchParameters.search !== "") {
-    filteredEquipments = filteredEquipments.filter(Equipments => {
+    filteredEquipments = allEquipments.filter(Equipments => {
       return filterEquipments(Equipments, searchParameters)
     })
   }
