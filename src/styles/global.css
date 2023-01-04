@@ -5,3 +5,7 @@
 *{
   font-family: "Century Gothic" !important
 }
+
+.text-black-important{
+  color: black !important;
+}

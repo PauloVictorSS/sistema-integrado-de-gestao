@@ -8,7 +8,7 @@ import { TextArea } from "./TextArea";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { Client } from "../functions/clientsFunctions";
 import { GeneralFunctions } from "../functions/generalFunctions";
-import logo from "../images/logo.svg"
+import logo from "../images/logo-preto.png"
 import cep from 'cep-promise'
 import { setFoneMask } from "../utils/helpers/masks";
 import { InputSelect } from "./InputSelect";
@@ -53,7 +53,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
     const componentRef = useRef(null);
     const generatePDF = useReactToPrint({
         content: () => componentRef.current,
-        documentTitle: "Test"
+        documentTitle: "Ordem-" + client.id + "-" + client.name
     });
 
     const saveChanges = async () => {
@@ -111,16 +111,16 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
 
     return (
         <>
-        <ModelBackground >
-            <BoxDiv className="w-[1000px] h-[675px] scrollbar-thin scrollbar-thumb-black scrollbar-track-gray-700">
+        <ModelBackground>
+            <BoxDiv className="bg-white w-[1000px] h-[675px] scrollbar-thin scrollbar-thumb-black scrollbar-track-white">
                 <div className="flex items-center justify-between">
                     <img src={logo} alt="" className="w-52"/>
-                    <h2 className="text-xl font-bold">{"Ordem de serviço nº" + serviceNumber}</h2>
+                    <h2 className="text-xl font-bold text-black-important">{"Ordem de serviço nº" + serviceNumber}</h2>
                 </div>
                 <div className="flex flex-col gap-4 items-stretch w-full mt-2">
                     <div className="flex items-center justify-between">
                         <label htmlFor="firstDate" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Data de entrada</Text>
+                            <Text className="font-semibold text-black-important">Data de entrada</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="date"
@@ -130,7 +130,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             />
                         </label>
                         <label htmlFor="lastDate" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Data de saída</Text>
+                            <Text className="font-semibold text-black-important">Data de saída</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="date"
@@ -142,7 +142,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                     </div>
                     <div className="flex items-center justify-between">
                         <label htmlFor="name" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Nome</Text>
+                            <Text className="font-semibold text-black-important">Nome</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="text"
@@ -153,7 +153,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             />
                         </label>
                         <label htmlFor="tel" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Telefone</Text>
+                            <Text className="font-semibold text-black-important">Telefone</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="text"
@@ -165,7 +165,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             />
                         </label>
                         <label htmlFor="cep" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">CEP</Text>
+                            <Text className="font-semibold text-black-important">CEP</Text>
                             <div className="flex gap-1">
                                 <InputText
                                     className="bg-gray-900"
@@ -183,7 +183,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                     </div>
                     <div className="flex items-center justify-between">
                         <label htmlFor="city" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Cidade</Text>
+                            <Text className="font-semibold text-black-important">Cidade</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="text"
@@ -194,7 +194,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             />
                         </label>
                         <label htmlFor="district" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Bairro</Text>
+                            <Text className="font-semibold text-black-important">Bairro</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="text"
@@ -205,7 +205,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             />
                         </label>
                         <label htmlFor="local" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Endereço</Text>
+                            <Text className="font-semibold text-black-important">Endereço</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="text"
@@ -218,7 +218,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                     </div>
                     <div className="flex items-center justify-between">
                         <label htmlFor="equipment" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Equipamento</Text>
+                            <Text className="font-semibold text-black-important">Equipamento</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="text"
@@ -229,7 +229,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             />
                         </label>
                         <label htmlFor="defect" className="flex flex-col gap-1 w-[604px]">
-                            <Text className="font-semibold">Defeito</Text>
+                            <Text className="font-semibold text-black-important">Defeito</Text>
                             <InputText
                                 className="bg-gray-900 max-w-none"
                                 type="text"
@@ -242,7 +242,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                     </div>
                     <div className="flex items-center justify-between">
                         <label htmlFor="brand" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Marca</Text>
+                            <Text className="font-semibold text-black-important">Marca</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="text"
@@ -253,7 +253,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             />
                         </label>
                         <label htmlFor="model" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Modelo</Text>
+                            <Text className="font-semibold text-black-important">Modelo</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="text"
@@ -264,7 +264,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             />
                         </label>
                         <label htmlFor="accessories" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Acessórios</Text>
+                            <Text className="font-semibold text-black-important">Acessórios</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="text"
@@ -277,7 +277,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                     </div>
                     <div className="flex items-center justify-between">
                         <label htmlFor="approval" className="flex flex-col gap-1">
-                            <Text className="font-semibold">Orçamento aprovado</Text>
+                            <Text className="font-semibold text-black-important">Orçamento aprovado</Text>
                             <InputSelect className="bg-gray-900 w-64" id="approval" value={clientApproval} onChange={(e) => {setClientApproval(e.target.value)}}>
                                 <option value="Pendente">Pendente</option>
                                 <option value="Sim">Sim</option>
@@ -285,14 +285,14 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             </InputSelect>
                         </label>
                         <label htmlFor="done" className="flex flex-col gap-1">
-                            <Text className="font-semibold">Serviço entregue</Text>
+                            <Text className="font-semibold text-black-important">Serviço entregue</Text>
                             <InputSelect className="bg-gray-900 w-64" id="done" value={clientDone} onChange={(e) => {setClientDone(e.target.value)}}>
                                 <option value="Não">Não</option>
                                 <option value="Sim">Sim</option>
                             </InputSelect>
                         </label>
                         <label htmlFor="paid" className="flex flex-col gap-1">
-                            <Text className="font-semibold">Serviço pago</Text>
+                            <Text className="font-semibold text-black-important">Serviço pago</Text>
                             <InputSelect className="bg-gray-900 w-64" id="paid" value={clientPaid} onChange={(e) => {setClientPaid(e.target.value)}}>
                                 <option value="Não">Não</option>
                                 <option value="Sim">Sim</option>
@@ -301,7 +301,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                     </div>
                     <div className="flex items-center justify-between">
                         <label htmlFor="budgetLabel" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Custo da mão de obra</Text>
+                            <Text className="font-semibold text-black-important">Custo da mão de obra</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="number"
@@ -312,7 +312,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             />
                         </label>
                         <label htmlFor="budgetComponents" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Custo dos componentes</Text>
+                            <Text className="font-semibold text-black-important">Custo dos componentes</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="number"
@@ -323,7 +323,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             />
                         </label>
                         <label htmlFor="budgetTotal" className="flex flex-col gap-1 w-64">
-                            <Text className="font-semibold">Custo total</Text>
+                            <Text className="font-semibold text-black-important">Custo total</Text>
                             <InputText
                                 className="bg-gray-900"
                                 type="number"
@@ -336,7 +336,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                     </div>
                     <div className="flex items-center justify-between">
                         <label htmlFor="technicalEvaluationt" className="flex flex-col gap-1 w-64 h-40">
-                            <Text className="font-semibold">Avaliação técnica</Text>
+                            <Text className="font-semibold text-black-important">Avaliação técnica</Text>
                             <TextArea
                                 className="h-40 bg-gray-900 w-64"
                                 id="technicalEvaluationt"
@@ -347,7 +347,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
                             </TextArea>
                         </label>
                         <label htmlFor="changedEquipaments" className="flex flex-col gap-1 w-64 h-40">
-                            <Text className="font-semibold">Itens trocados</Text>
+                            <Text className="font-semibold text-black-important">Itens trocados</Text>
                             <TextArea
                                 className="h-40 bg-gray-900 w-64"
                                 id="changedEquipaments"

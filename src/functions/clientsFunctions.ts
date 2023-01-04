@@ -45,12 +45,11 @@ const filterClients = (client:IClient, searchParameters:ISearchParametersClients
 
   const clientName = client.name.toLowerCase()
   const clientEquipament = client.equipment.toLowerCase()
-  const clientBrand = client.brand.toLowerCase()
-  const clientModel = client.model.toLowerCase()
+  const clientID = client.id.toLowerCase()
   const clientApproval = client.approval.toLowerCase()
 
   const clientHasSameApproval = (clientApproval.includes(searchParameters.approval))
-  const clientHadSearched = (clientName.includes(searchParameters.search) || clientEquipament.includes(searchParameters.search) || clientBrand.includes(searchParameters.search) || clientModel.includes(searchParameters.search))
+  const clientHadSearched = (clientName.includes(searchParameters.search) || clientEquipament.includes(searchParameters.search) || clientID.includes(searchParameters.search))
 
   if (searchParameters.search === "")
     return clientHasSameApproval

@@ -9,6 +9,15 @@ export const makeNotificationsForBills = (allBills:Array<IBill>) => {
   let todayDate = new Date()
   todayDate.setDate(todayDate.getDate() - 1)
 
+  allBills.sort((a, b) => {
+    let aBillDate = new Date(a.dueDate)
+    let bBillDate = new Date(b.dueDate)
+    if ((aBillDate.getTime() - bBillDate.getTime()) < 0)
+      return -1;
+    else
+      return 0;
+  })
+
   allBills.filter((bill) => {
     let billDueDate = new Date(bill.dueDate)
     billDueDate.setDate(billDueDate.getDate() + 1)
@@ -16,10 +25,10 @@ export const makeNotificationsForBills = (allBills:Array<IBill>) => {
     let timeDiff = Math.abs(todayDate.getTime() - billDueDate.getTime());
     let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
 
-    if (diffDays <= (DaysDiffToNotice + 2) && (billDueDate > todayDate))
+    if (diffDays <= (DaysDiffToNotice + 2))
       allBillsNotifications.push({
         id: bill.id,
-        text: bill.name + " vence na data " + bill.dueDate.split('-').reverse().join('/')
+        text: bill.name + (billDueDate > todayDate ? " vence em " : " venceu em ") + bill.dueDate.split('-').reverse().join('/')
       })
   })
 
