@@ -12,5 +12,11 @@
 build
 dist
 
+#firebase
+.firebaserc
+.firebase
+firebase.json
+
+
 src/config
 .env
