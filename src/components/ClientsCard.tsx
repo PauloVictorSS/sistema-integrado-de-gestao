@@ -81,6 +81,8 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
         } as IClient
         
         await Client.saveClient(currentClient)
+        if (isToAdd)
+            await GeneralFunctions.updateNumberNewServiceOrder()
 
         refresh()
         changeClientsCard()
