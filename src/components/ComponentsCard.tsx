@@ -48,13 +48,13 @@ export function ComponentsCard({isToAdd, component, changeComponentsCard, change
 
     return(
         <ModelBackground>
-            <BoxDiv className="w-96">
-                <h2 className="font-bold text-xl max-w-sm mx-auto text-center mb-4">
+            <BoxDiv className="bg-white-important w-96">
+                <h2 className="font-bold text-xl max-w-sm mx-auto text-center mb-4 text-black-important">
                     {isToAdd ? "Novo componente" : "Alterar componente"}
                 </h2>
                 <div className="flex flex-col gap-6 items-stretch w-full">
                     <label htmlFor="name" className="flex flex-col gap-3">
-                        <Text className="font-semibold">Nome</Text>
+                        <Text className="font-semibold text-black-important">Nome</Text>
                         <InputText
                             className="bg-gray-900"
                             type="text"
@@ -65,7 +65,7 @@ export function ComponentsCard({isToAdd, component, changeComponentsCard, change
                         />
                     </label>
                     <label htmlFor="qtd" className="flex flex-col gap-3">
-                        <Text className="font-semibold">Quantidade</Text>
+                        <Text className="font-semibold text-black-important">Quantidade</Text>
                         <InputText
                             className="bg-gray-900"
                             type="number"
@@ -76,7 +76,7 @@ export function ComponentsCard({isToAdd, component, changeComponentsCard, change
                         />
                     </label>
                     <label htmlFor="qtdMin" className="flex flex-col gap-3">
-                        <Text className="font-semibold">Quantidade mínima</Text>
+                        <Text className="font-semibold text-black-important">Quantidade mínima</Text>
                         <InputText
                             className="bg-gray-900"
                             type="number"
@@ -87,7 +87,7 @@ export function ComponentsCard({isToAdd, component, changeComponentsCard, change
                         />
                     </label>
                     <label htmlFor="localCard" className="flex flex-col gap-3">
-                        <Text className="font-semibold">Local de armazenamento</Text>
+                        <Text className="font-semibold text-black-important">Local de armazenamento</Text>
                         <InputText
                             className="bg-gray-900"
                             type="text"
@@ -98,7 +98,7 @@ export function ComponentsCard({isToAdd, component, changeComponentsCard, change
                         />
                     </label>
                     <label htmlFor="name" className="flex flex-col gap-3">
-                        <Text className="font-semibold">Descrição</Text>
+                        <Text className="font-semibold text-black-important">Descrição</Text>
                         <TextArea
                             className="bg-gray-900"
                             placeholder="descrição do componente"

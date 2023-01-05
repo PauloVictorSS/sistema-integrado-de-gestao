@@ -42,13 +42,13 @@ export function BillsCard({isToAdd, bill, changeBillsCard, changeViewAlertCard, 
 
     return(
         <ModelBackground>
-            <BoxDiv className="w-96">
-                <h2 className="font-bold text-xl max-w-sm mx-auto text-center mb-4">
+            <BoxDiv className="bg-white-important w-96">
+                <h2 className="font-bold text-xl max-w-sm mx-auto text-center mb-4 text-black-important">
                     {isToAdd ? "Nova conta" : "Alterar conta"}
                 </h2>
                 <div className="flex flex-col gap-6 items-stretch w-full">
                     <label htmlFor="name" className="flex flex-col gap-3">
-                        <Text className="font-semibold">Nome</Text>
+                        <Text className="font-semibold text-black-important">Nome</Text>
                         <InputText
                             className="bg-gray-900"
                             type="text"
@@ -59,7 +59,7 @@ export function BillsCard({isToAdd, bill, changeBillsCard, changeViewAlertCard, 
                         />
                     </label>
                     <label htmlFor="value" className="flex flex-col gap-3">
-                        <Text className="font-semibold">Valor (R$)</Text>
+                        <Text className="font-semibold text-black-important">Valor (R$)</Text>
                         <InputText
                             className="bg-gray-900"
                             type="number"
@@ -70,7 +70,7 @@ export function BillsCard({isToAdd, bill, changeBillsCard, changeViewAlertCard, 
                         />
                     </label>
                     <label htmlFor="dueDate" className="flex flex-col gap-1 w-64">
-                        <Text className="font-semibold">Data de vencimento</Text>
+                        <Text className="font-semibold text-black-important">Data de vencimento</Text>
                         <InputText
                             className="bg-gray-900"
                             type="date"

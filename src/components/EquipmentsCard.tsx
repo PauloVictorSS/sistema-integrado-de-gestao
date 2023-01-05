@@ -47,13 +47,13 @@ export function EquipmentsCard({isToAdd, equipament, changeEquipmentsCard, chang
 
     return(
         <ModelBackground>
-            <BoxDiv className="w-96">
-                <h2 className="font-bold text-xl max-w-sm mx-auto text-center mb-4">
+            <BoxDiv className="bg-white-important w-96">
+                <h2 className="font-bold text-xl max-w-sm mx-auto text-center mb-4 text-black-important">
                     {isToAdd ? "Nova peça/equipamento" : "Alterar peça/equipamento"}
                 </h2>
                 <div className="flex flex-col gap-6 items-stretch w-full">
                     <label htmlFor="type" className="flex flex-col gap-3">
-                        <Text className="font-semibold">Tipo</Text>
+                        <Text className="font-semibold text-black-important">Tipo</Text>
                         <InputText
                             className="bg-gray-900"
                             type="text"
@@ -64,7 +64,7 @@ export function EquipmentsCard({isToAdd, equipament, changeEquipmentsCard, chang
                         />
                     </label>
                     <label htmlFor="qtd" className="flex flex-col gap-3">
-                        <Text className="font-semibold">Quantidade</Text>
+                        <Text className="font-semibold text-black-important">Quantidade</Text>
                         <InputText
                             className="bg-gray-900"
                             type="number"
@@ -75,7 +75,7 @@ export function EquipmentsCard({isToAdd, equipament, changeEquipmentsCard, chang
                         />
                     </label>
                     <label htmlFor="model" className="flex flex-col gap-3">
-                        <Text className="font-semibold">Modelo</Text>
+                        <Text className="font-semibold text-black-important">Modelo</Text>
                         <InputText
                             className="bg-gray-900"
                             type="text"
@@ -86,7 +86,7 @@ export function EquipmentsCard({isToAdd, equipament, changeEquipmentsCard, chang
                         />
                     </label>
                     <label htmlFor="brand" className="flex flex-col gap-3">
-                        <Text className="font-semibold">Marca</Text>
+                        <Text className="font-semibold text-black-important">Marca</Text>
                         <InputText
                             className="bg-gray-900"
                             type="text"
@@ -97,7 +97,7 @@ export function EquipmentsCard({isToAdd, equipament, changeEquipmentsCard, chang
                         />
                     </label>
                     <label className="flex flex-col gap-3">
-                        <Text className="font-semibold">Aplicação</Text>
+                        <Text className="font-semibold text-black-important">Aplicação</Text>
                         <TextArea
                             className="bg-gray-900"
                             placeholder="aplicação do equipamento"

@@ -9,3 +9,7 @@
 .text-black-important{
   color: black !important;
 }
+
+.bg-white-important{
+  background-color: white !important;
+}

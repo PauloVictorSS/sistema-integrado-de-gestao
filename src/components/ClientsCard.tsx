@@ -112,7 +112,7 @@ export function ClientsCard({isToAdd, client, changeClientsCard, changeViewAlert
     return (
         <>
         <ModelBackground>
-            <BoxDiv className="bg-white w-[1000px] h-[675px] scrollbar-thin scrollbar-thumb-black scrollbar-track-white">
+            <BoxDiv className="bg-white-important w-[1000px] h-[675px] scrollbar-thin scrollbar-thumb-black scrollbar-track-white">
                 <div className="flex items-center justify-between">
                     <img src={logo} alt="" className="w-52"/>
                     <h2 className="text-xl font-bold text-black-important">{"Ordem de serviço nº" + serviceNumber}</h2>
